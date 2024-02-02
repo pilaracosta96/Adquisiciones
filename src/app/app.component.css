@@ -1,0 +1,12 @@
+.conteiner{
+    text-align: center;
+    position: absolute;
+    width: 1280px;
+    height: 134px;
+    font-family: "Kadwa", HelveticaRobo;
+    font-weight: 700;
+    font-size: 64px;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: 0px;
+}

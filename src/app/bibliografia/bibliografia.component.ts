@@ -6,15 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './bibliografia.component.css'
 })
 export class BibliografiaComponent {
-  titulo="unTitulo";
-  nombreAutor="unNombre";
-  apellidoAutor="unApellido";
-  aniPublicacion="unAnio";
-  editorial="unaEditorial";
-  isbn=0;
-  issn=0;
-  monto="unMonto";
-  tipoMaterial="unTipo"
-
 
 }
