@@ -10,6 +10,11 @@ import { InfraComponent } from './paginas/infra/infra.component';
 import { ServiciosComponent } from './paginas/servicios/servicios.component';
 import {  HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
+import { FormBiblioComponent } from './form-biblio/form-biblio.component';
+import { FormLicenciaComponent } from './form-licencia/form-licencia.component';
+import { FormInfraComponent } from './form-infra/form-infra.component';
+import { FormServicioComponent } from './form-servicio/form-servicio.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +22,11 @@ import {  HttpClientModule, provideHttpClient, withFetch } from '@angular/common
     BibliografiaComponent,
     LicenciasComponent,
     InfraComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    FormBiblioComponent,
+    FormLicenciaComponent,
+    FormInfraComponent,
+    FormServicioComponent
     
   ],
   imports: [
