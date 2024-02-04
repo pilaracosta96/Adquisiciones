@@ -1,15 +1,15 @@
-<h1 style="margin-left: 150px;">{{nombrePagina}}</h1>
-<table class="table" style="margin: 0px 150px 150px 150px;">
+<h1 style="margin-left: 80px;">{{nombre}}</h1>
+<table class="table" style="margin-left: 80px;">
   <thead>
     <tr>
-      <th scope="col">{{columnaA}}</th>
-      <th scope="col">{{columnaB}}</th>
-      <th scope="col">{{columnaC}}</th>
+      <th scope="col">Título</th>
+      <th scope="col">Nombre del autor</th>
+      <th scope="col">Monto</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    @for ( item of listaBibliografias; track $index) {
+    @for ( item of bibliografias; track $index) {
     <tr>
       <td>{{item.titulo}}</td>
       <td>{{item.nombreAutor}}</td>

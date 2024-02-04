@@ -1,0 +1,23 @@
+<h1 style="margin-left: 80px;">{{nombre}}</h1>
+<table class="table" style="margin-left: 80px;">
+  <thead>
+    <tr>
+      <th scope="col">Descripción</th>
+      <th scope="col">Fecha de incorporación</th>
+      <th scope="col">Monto</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for ( item of equipos; track $index) {
+    <tr>
+      <td>{{item.descripcion}}</td>
+      <td>{{item.fechaIncorporacion}}</td>
+      <td>{{item.monto | currency}}</td>
+      <td><button class="btn btn-dark"><a href=""></a>Ver más</button></td>
+      <td></td>
+    </tr>
+  }
+    
+  </tbody>
+</table>

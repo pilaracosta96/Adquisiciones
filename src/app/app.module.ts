@@ -4,11 +4,11 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BibliografiaComponent } from './bibliografia/bibliografia.component';
-import { LicenciasComponent } from './licencias/licencias.component';
-import { InfraComponent } from './infra/infra.component';
-import { ServiciosComponent } from './servicios/servicios.component';
-import { ListaComponent } from './lista/lista.component';
+import { BibliografiaComponent } from './paginas/bibliografia/bibliografia.component';
+import { LicenciasComponent } from './paginas/licencias/licencias.component';
+import { InfraComponent } from './paginas/infra/infra.component';
+import { ServiciosComponent } from './paginas/servicios/servicios.component';
+import {  HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,18 +17,18 @@ import { ListaComponent } from './lista/lista.component';
     BibliografiaComponent,
     LicenciasComponent,
     InfraComponent,
-    ServiciosComponent,
-    ListaComponent,
+    ServiciosComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(), provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })
