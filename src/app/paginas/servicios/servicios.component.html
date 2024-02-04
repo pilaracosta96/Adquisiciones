@@ -1,21 +1,26 @@
-<h1 style="margin-left: 80px;">{{nombre}}</h1>
-<table class="table" style="margin-left: 80px;">
-  <thead>
-    <tr>
-      <th scope="col">Tipo de Servicio</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Monto</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    @for ( item of servicios; track $index) {
-    <tr>
-      <td>{{item.tipoServicio.nombreTipoServicio}}</td>
-      <td>{{item.fecha}}</td>
-      <td>{{item.monto | currency}}</td>
-      <td><button class="btn btn-dark"><a href=""></a>Ver más</button></td>
-      <td></td>
-    </tr>
-  }
+<h3 style="margin-left: 120px;">{{nombre}}</h3>
+<div class="container text-center">
+
+  <table class="table table-bordered">
+    <caption>Lista de Servicios</caption>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Tipo de Servicio</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Monto</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for ( item of servicios; track $index) {
+        <tr>
+          <td>{{item.tipoServicio.nombreTipoServicio}}</td>
+          <td>{{item.fecha}}</td>
+          <td>{{item.monto | currency}}</td>
+          <td><button class="btn btn-dark"><a href=""></a>Ver más</button></td>        </tr>
+      }
+    </table>
+    <button type="button" class="btn btn-secondary" >Cargar {{nombre}}</button>
+  </div>
+    
     

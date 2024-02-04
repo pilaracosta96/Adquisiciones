@@ -1,23 +1,26 @@
-<h1 style="margin-left: 80px;">{{nombre}}</h1>
-<table class="table" style="margin-left: 80px;">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Versión</th>
-      <th scope="col">Monto</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
+<h3 style="margin-left: 115px;">{{nombre}}</h3>
+<div class="container text-center">
+  <table class="table table-bordered">
+    <caption>Lista de Licencias de Software</caption>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Versión</th>
+        <th scope="col">Monto</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
   <tbody>
     @for ( item of licencias; track $index) {
-    <tr>
-      <td>{{item.nombre}}</td>
-      <td>{{item.version}}</td>
-      <td>{{item.monto | currency}}</td>
-      <td><button class="btn btn-dark"><a href=""></a>Ver más</button></td>
-      <td></td>
-    </tr>
-  }
+      <tr>
+        <td>{{item.nombre}}</td>
+        <td>{{item.version}}</td>
+        <td>{{item.monto | currency}}</td>
+        <td><button class="btn btn-dark"><a href=""></a>Ver más</button></td>
+      </tr>
+    }
     
   </tbody>
 </table>
+<button type="button" class="btn btn-secondary">Cargar {{nombre}}</button>
+</div>

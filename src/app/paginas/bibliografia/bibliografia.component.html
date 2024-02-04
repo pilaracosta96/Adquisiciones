@@ -1,6 +1,8 @@
-<h1 style="margin-left: 80px;">{{nombre}}</h1>
-<table class="table" style="margin-left: 80px;">
-  <thead>
+<h3 style="margin-left: 115px;">{{nombre}}</h3>
+<div class="container text-center">
+<table class="table table-bordered" >
+  <caption>Lista de Bibliografías</caption>
+  <thead class="table-dark">
     <tr>
       <th scope="col">Título</th>
       <th scope="col">Nombre del autor</th>
@@ -15,9 +17,13 @@
       <td>{{item.nombreAutor}}</td>
       <td>{{item.monto | currency}}</td>
       <td><button class="btn btn-dark"><a href=""></a>Ver más</button></td>
-      <td></td>
     </tr>
   }
     
   </tbody>
 </table>
+<button type="button" class="btn btn-secondary" >Cargar Nueva {{nombre}}</button>
+</div>
+
+<!-- <div style="margin-left:500px">
+</div> -->

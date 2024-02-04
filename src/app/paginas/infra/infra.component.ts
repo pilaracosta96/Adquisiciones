@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IInfra } from '../../models/infre.model';
+import { IInfra } from '../../models/infra.model';
 import { ApiService } from '../../services/api.service';
 
 @Component({

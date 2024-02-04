@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { IBibliografia } from '../models/bibliografia.model';
 import { IServicio } from '../models/servicio.model';
 import { ILicencia } from '../models/licencia.model';
-import { IInfra } from '../models/infre.model';
+import { IInfra } from '../models/infra.model';
 
 @Injectable({
   providedIn: 'root'

@@ -14,7 +14,7 @@ export class BibliografiaComponent  implements OnInit{
   
   private _apiService = inject(ApiService);
   
-  nombre="Bibliografías"
+  nombre="Bibliografía"
   
   
   ngOnInit(): void {
