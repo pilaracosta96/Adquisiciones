@@ -14,6 +14,7 @@ import { FormBiblioComponent } from './form-biblio/form-biblio.component';
 import { FormLicenciaComponent } from './form-licencia/form-licencia.component';
 import { FormInfraComponent } from './form-infra/form-infra.component';
 import { FormServicioComponent } from './form-servicio/form-servicio.component';
+import { InicioComponent } from './paginas/inicio/inicio.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormServicioComponent } from './form-servicio/form-servicio.component';
     FormBiblioComponent,
     FormLicenciaComponent,
     FormInfraComponent,
-    FormServicioComponent
+    FormServicioComponent,
+    InicioComponent
     
   ],
   imports: [
