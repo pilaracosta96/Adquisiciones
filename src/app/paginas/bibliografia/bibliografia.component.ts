@@ -20,6 +20,7 @@ export class BibliografiaComponent  implements OnInit{
   nombre: string ="Bibliografía"
   private _router = inject(Router)
   item: any;
+  si?: boolean;
  
   
   ngOnInit(): void {
@@ -31,9 +32,12 @@ export class BibliografiaComponent  implements OnInit{
   
   seleccion(item: any){
     this.item = item;
-
+    
   }
   
+  cerrar(){
+    this.si=false;
+  }
 
   
  

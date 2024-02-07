@@ -1,7 +1,5 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../services/api.service';
-import { IBibliografia } from '../models/bibliografia.model';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-modal',
@@ -11,6 +9,17 @@ import { IBibliografia } from '../models/bibliografia.model';
 export class ModalComponent {
   @Input() titulo: string ="";
   @Input() objeto?: any
+
+  
+
+  
+  @Output() cerrar = new EventEmitter<boolean>;
+
+  limpiarCheck(){
+    
+    this.cerrar.emit(false);
+
+  }
   
 
   }
