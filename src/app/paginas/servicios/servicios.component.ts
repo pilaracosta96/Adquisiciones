@@ -14,6 +14,7 @@ servicios?: IServicio[];
 private _apiService = inject(ApiService)
 
   nombre="Servicios";
+  item: any;
 
 
   ngOnInit(): void {
@@ -22,4 +23,8 @@ private _apiService = inject(ApiService)
     })
   }
 
+  seleccion(item: any){
+    this.item = item;
+
+  }
 }

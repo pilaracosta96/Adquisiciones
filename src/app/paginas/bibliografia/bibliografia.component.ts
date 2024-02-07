@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { IBibliografia } from '../../models/bibliografia.model';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,16 +12,29 @@ import { IBibliografia } from '../../models/bibliografia.model';
 })
 export class BibliografiaComponent  implements OnInit{
   
-  bibliografias?: IBibliografia[]
+  bibliografias: IBibliografia[] =[]
   
   private _apiService = inject(ApiService);
+
   
-  nombre="Bibliografía"
-  
+  nombre: string ="Bibliografía"
+  private _router = inject(Router)
+  item: any;
+ 
   
   ngOnInit(): void {
     this._apiService.getBibliografias().subscribe((data:IBibliografia[]) =>{
       this.bibliografias = data;
+      
     })
   }
+  
+  seleccion(item: any){
+    this.item = item;
+
+  }
+  
+
+  
+ 
 }

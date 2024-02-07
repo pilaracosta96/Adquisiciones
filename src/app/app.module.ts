@@ -15,6 +15,8 @@ import { FormLicenciaComponent } from './form-licencia/form-licencia.component';
 import { FormInfraComponent } from './form-infra/form-infra.component';
 import { FormServicioComponent } from './form-servicio/form-servicio.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
+import { ModalComponent } from './modal/modal.component';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { InicioComponent } from './paginas/inicio/inicio.component';
     FormLicenciaComponent,
     FormInfraComponent,
     FormServicioComponent,
-    InicioComponent
+    InicioComponent,
+    ModalComponent
     
   ],
   imports: [

@@ -19,6 +19,12 @@ export class ApiService {
   getBibliografias():Observable<IBibliografia[]>{
     return this._http.get<IBibliografia[]>(`${this._urlBase}/bibliografias/listar`);
   }
+  
+  getBibliografia(titulo:string):Observable<IBibliografia>{
+    return this._http.get<IBibliografia>(`${this._urlBase}/bibliografias/titulo/:${titulo}`);
+  }
+  
+
   getServicios():Observable<IServicio[]>{
     return this._http.get<IServicio[]>(`${this._urlBase}/servicio/listar`)
   }
