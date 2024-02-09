@@ -37,8 +37,12 @@ export class BibliografiaComponent  implements OnInit{
   
   cerrar(){
     this.si=false;
+    console.log("cerrado");
   }
 
+  eliminar(){
+    console.log("eliminado");
+  }
   
  
 }

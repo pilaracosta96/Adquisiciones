@@ -1,35 +1,44 @@
-<div class="container text-center">
-    <form class="row g-3">
-    <div class="col-md-4">
-        <label for="inputTitulo" class="form-label">Cómo se llama el libro?</label>
-        <input type="text" class="form-control" id="inputTitulo" placeholder="Ingrese el título">
-        <input type="text" class="form-control" id="inputNombreAutor" placeholder="Ingrese el nombre del autor">
-        <input type="text" class="form-control" id="inputNombreAutor" placeholder="Ingrese el apellido del autor">
-    </div>
-    <div class="col-md-4">
-        <label for="inputISBN" class="form-label">códigos:</label>
-        <input type="number" class="form-control" id="inputISBN" placeholder="Ingrese N° ISBN">
-        <input type="number" class="form-control" id="inputISSN" placeholder="Ingrese N° ISSN">
-    </div>
-    <div class="col-md-4">
-        <label for="inputEditorial" class="form-label">datos de publicación:</label>
-        <input type="text" class="form-control" id="inputEditorial" placeholder="Ingrese una editorial">
-        <input type="number" class="form-control" id="inputAnioPubli" placeholder="Ingrese el año de publicación">
-    </div>
-    <div >
-        <div class="col-md-4" style="margin-bottom: 8px;">
-            <label for="inputTipoMaterial" class="form-label">otros datos:</label>
-            <input type="text" class="form-control" id="inputTipoMaterial" placeholder="Ingrese tipo de material">
+<h3 class="d-flex justify-content-center"> Formulario de carga </h3>
+
+<div class="d-flex justify-content-center" >
+    <form [formGroup]="formularioBiblio" class="row g-3" (ngSubmit)="enviar()">
+        <div class="col-md-4">
+            <label for="titulo" class="form-label">Título</label>
+            <input [ngClass]="{'is-invalid': hasErrors('titulo') }" type="text" class="form-control" formControlName="titulo" placeholder="título...">
+            @if (hasErrors('titulo')) {
+            <div class="text-danger">Título requerido</div>}
+            <label for="nombre_autor" class="form-label">Nombre del Autor</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('nombre_autor') }" type="text" class="form-control" formControlName="nombre_autor" placeholder="nombre..." >
+            @if (hasErrors('nombre_autor')){<div class="text-danger">Nombre de autor requerido</div>}
+            <label for="apellido_autor" class="form-label">Apellido del Autor</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('apellido_autor') }" type="text" class="form-control" formControlName="apellido_autor"  placeholder="apellido...">
+            @if (hasErrors('apellido_autor')){<div class="text-danger">Apellido de autor requerido</div>}
+            <label for="monto" class="form-label">Monto</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control"formControlName="monto" placeholder="monto...">
+            @if(hasErrors('monto')){<div class="text-danger">monto requerido</div>}
         </div>
-        <div class="col-md-4" style="margin-bottom: 8px;">
-            <input type="text" class="form-control" id="inputURL"  placeholder="Ingrese URL">
+        <div class="col-md-4">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('isbn') }" type="number" class="form-control" formControlName="isbn" placeholder="Nº de ISBN...">
+            @if(hasErrors('isbn')){<div class="text-danger">ISBN requerido</div>}
+            <label for="issn" class="form-label">ISSN</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('issn') }" type="number" class="form-control" formControlName="issn" placeholder="Nº de ISSN...">
+            @if (hasErrors('issn')) {<div class="text-danger">ISSN requerido</div>}
+            <label for="tipo_material" class="form-label">Tipo de material</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('tipo_material') }" type="text" class="form-control" formControlName="tipo_material" placeholder="tipo de material...">
+            @if (hasErrors('tipo_material')) {<div class="text-danger">Tipo de material requerido</div>}
+         </div>
+        <div class="col-md-4">
+            <label for="editorial" class="form-label">Editorial</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('editorial') }" type="text" class="form-control" formControlName="editorial" placeholder="editorial...">
+            @if (hasErrors('editorial')) {<div class="text-danger">Editorial requerido</div>}
+            <label for="anio_publicacion" class="form-label">Año de publicación</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('anio_publicacion') }" type="number" class="form-control" formControlName="anio_publicacion" placeholder="año de publicación...">
+            @if (hasErrors('anio_publicacion')) {<div class="text-danger">Año publicación requerido</div>}
         </div>
-        <div class="col-md-4" style="margin-bottom: 8px;">
-            <input type="number" class="form-control" id="inputPrecio" placeholder="Ingrese el precio">
-        </div>
-    </div>
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-secondary">Guardar</button>
     </div>
 </form>
 </div>
+

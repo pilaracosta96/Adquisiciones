@@ -1,10 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-form-biblio',
   templateUrl: './form-biblio.component.html',
   styleUrl: './form-biblio.component.css'
 })
-export class FormBiblioComponent{
+export class FormBiblioComponent {
+  
+  
+  formularioBiblio: FormGroup;
+  
+  private _apiService = inject(ApiService);
 
+
+  constructor( private form: FormBuilder){
+    this.formularioBiblio = this.form.group({
+      titulo: ['', Validators.required],
+      nombre_autor: ['', Validators.required],
+      apellido_autor: ['', Validators.required],
+      issn: ['', Validators.required],
+      isbn: ['', Validators.required],
+      editorial: ['', Validators.required],
+      anio_publicacion: ['', Validators.required],
+      tipo_material: ['', Validators.required],
+      monto: ['', Validators.required],
+
+    });
+  }
+ 
+  enviar(){
+   
+    this._apiService.postGuardarBibliografia(JSON.stringify(this.formularioBiblio.value)).subscribe(response => {
+      alert('Respuesta del backend:'+ JSON.stringify(response) );
+  },
+  error => {
+      console.error('Error al enviar datos:', error);
+  }
+  );
+    
+  }
+
+  hasErrors(controlName:string) {
+    return this.formularioBiblio.get(controlName)?.hasError('required') && this.formularioBiblio.get(controlName)?.touched;
+  }
 }

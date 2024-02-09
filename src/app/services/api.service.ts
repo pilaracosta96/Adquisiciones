@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { IBibliografia } from '../models/bibliografia.model';
 import { IServicio } from '../models/servicio.model';
 import { ILicencia } from '../models/licencia.model';
@@ -20,9 +20,9 @@ export class ApiService {
     return this._http.get<IBibliografia[]>(`${this._urlBase}/bibliografias/listar`);
   }
   
-  getBibliografia(titulo:string):Observable<IBibliografia>{
-    return this._http.get<IBibliografia>(`${this._urlBase}/bibliografias/titulo/:${titulo}`);
-  }
+  // getBibliografia(titulo:string):Observable<IBibliografia>{
+  //   return this._http.get<IBibliografia>(`${this._urlBase}/bibliografias/titulo/:${titulo}`);
+  // }
   
 
   getServicios():Observable<IServicio[]>{
@@ -35,4 +35,51 @@ export class ApiService {
   getEquipos():Observable<IInfra[]>{
     return this._http.get<IInfra[]>(`${this._urlBase}/equipoInfraestructura/listar`)
   }
+
+  postGuardarBibliografia(data?: string): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.post<string>(this._urlBase+'/bibliografias/guardar', data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+      
+  }
+  postGuardarLicencia(data?: string): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.post<string>(this._urlBase+'/licenciaSoftware/guardar', data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+      
+  }
+  postGuardarServicio(data?: string): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.post<string>(this._urlBase+'/servicio/guardar', data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+      
+  }
+  postGuardarEquipo(data?: string): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.post<string>(this._urlBase+'/equipoInfraestructura/guardar', data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+      
+  }
+
+  private handleHttpError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Ocurrió un error en la solicitud HTTP';
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
+      errorMessage = `Error del lado del cliente: ${error.error.message}`;
+    } else {
+      // El backend retornó un código de estado fallido
+      errorMessage = `Código de error: ${error.status}\nMensaje: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  } 
+
 }

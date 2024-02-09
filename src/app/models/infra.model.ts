@@ -1,14 +1,16 @@
 export interface IInfra {
-    id:                 number;
+    id:                 number | null;
     tipoEquipo:         TipoEquipo;
     fechaIncorporacion: number;
     monto:              number;
-    descripcion:        null | string;
-    numeroSerie:        number | null;
+    descripcion:        string;
+    numeroSerie:        number;
     eliminada:          boolean;
 }
 
 export interface TipoEquipo {
     id:               number;
     nombreTipoEquipo: string;
+    cantidad:         number;
+    precioUnitario:   number;
 }

@@ -1,15 +1,24 @@
-<div class="container text-center" style="margin: 0% 0% 0% 20%;">
-    <form class="row g-3">
+<h3 class="d-flex justify-content-center"> Formulario de carga </h3>
+
+<div class="container text-center" style="margin-left: 300px;" >
+    <form [formGroup]="formularioServicio" class="row g-3" (ngSubmit)="enviar()">
     <div class="col-md-8">
-        <label for="inputTipoServicio" class="form-label">Complete la Información:</label>
-        <input type="text" class="form-control" id="inputTipoServicio" placeholder="Tipo de Servicio">
-        <input type="number" class="form-control" id="inputFecha" placeholder="Fecha">
-        <input type="number" class="form-control" id="inputPrecio" placeholder="Precio">
+        <label for="tipo_servicio" class="form-label">Tipo de Servicio </label>
+        <input [ngClass]="{'is-invalid': hasErrors('tipo_servicio') }" type="text" class="form-control" formControlName="tipo_servicio" placeholder="Tipo de Servicio...">
+        @if (hasErrors('tipo_servicio')) {<div class="text-danger">Tipo de servicio requerido</div>}
+        
+        <label for="monto" class="form-label">Monto </label>
+        <input [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control" formControlName="monto" placeholder="monto...">
+        @if (hasErrors('monto')) {<div class="text-danger">monto requerido</div>}
+        
+        <label for="fecha" class="form-label">Fecha </label>
+        <input [ngClass]="{'is-invalid': hasErrors('fecha') }" type="number" class="form-control" formControlName="fecha" placeholder="Fecha...">
+        @if (hasErrors('fecha')) {<div class="text-danger">Fecha requerido</div>}
     </div>
 
 
-    <div class="col-8">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+    <div class="col-8 d-flex justify-content-center">
+        <button type="submit" class="btn btn-secondary">Guardar</button>
     </div>
 </form>
 </div>
