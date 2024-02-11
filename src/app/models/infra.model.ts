@@ -6,6 +6,7 @@ export interface IInfra {
     descripcion:        string;
     numeroSerie:        number;
     eliminada:          boolean;
+    isSelected:         boolean;
 }
 
 export interface TipoEquipo {

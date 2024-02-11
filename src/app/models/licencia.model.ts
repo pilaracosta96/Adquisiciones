@@ -9,6 +9,7 @@ export interface ILicencia {
     version:           number;
     monto:             number;
     eliminada:         boolean;
+    isSelected:        boolean;
 }
 
 export interface Fabricante {

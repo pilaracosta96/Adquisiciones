@@ -19,6 +19,7 @@ import { ModalComponent } from './modal/modal.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +32,7 @@ import { ModalComponent } from './modal/modal.component';
     FormInfraComponent,
     FormServicioComponent,
     InicioComponent,
-    ModalComponent
-    
+    ModalComponent    
   ],
   imports: [
     BrowserModule,

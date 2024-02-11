@@ -26,6 +26,15 @@ export class LicenciasComponent implements OnInit{
 
   }
 
+  cerrar($event: boolean){
+    this.item.isSelected = $event;
+  }
+
+  eliminar(id: number){
+    
+    this._apiService.delEliminarLicenciaPorId(id).subscribe(response => {alert(JSON.stringify(response))});
+  }
+
   
   
   

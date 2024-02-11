@@ -21,7 +21,8 @@ export class FormLicenciaComponent {
       monto: ['', Validators.required],
       nombre: ['', Validators.required],
       numero_release: ['', Validators.required],
-      fabricante: ['', Validators.required]
+      fabricante: ['', Validators.required],
+      version: ['', Validators.required]
 
     });
   }
@@ -35,11 +36,15 @@ export class FormLicenciaComponent {
       console.error('Error al enviar datos:', error);
   }
   );
-    
+  this.limpiar();
   }
 
   hasErrors(controlName:string) {
     return this.formularioLicencia.get(controlName)?.hasError('required') && this.formularioLicencia.get(controlName)?.touched;
+  }
+
+  limpiar(){
+    this.formularioLicencia.reset();
   }
 
 }

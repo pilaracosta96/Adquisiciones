@@ -1,6 +1,6 @@
-<h3 class="d-flex justify-content-center"> Formulario de carga </h3>
+<h3 class="d-flex justify-content-center"> Formulario de carga de Bibliografias</h3>
 
-<div class="d-flex justify-content-center" >
+<div class="container" >
     <form [formGroup]="formularioBiblio" class="row g-3" (ngSubmit)="enviar()">
         <div class="col-md-4">
             <label for="titulo" class="form-label">Título</label>
@@ -13,9 +13,7 @@
             <label for="apellido_autor" class="form-label">Apellido del Autor</label>
             <input  [ngClass]="{'is-invalid': hasErrors('apellido_autor') }" type="text" class="form-control" formControlName="apellido_autor"  placeholder="apellido...">
             @if (hasErrors('apellido_autor')){<div class="text-danger">Apellido de autor requerido</div>}
-            <label for="monto" class="form-label">Monto</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control"formControlName="monto" placeholder="monto...">
-            @if(hasErrors('monto')){<div class="text-danger">monto requerido</div>}
+            
         </div>
         <div class="col-md-4">
             <label for="isbn" class="form-label">ISBN</label>
@@ -33,12 +31,20 @@
             <input  [ngClass]="{'is-invalid': hasErrors('editorial') }" type="text" class="form-control" formControlName="editorial" placeholder="editorial...">
             @if (hasErrors('editorial')) {<div class="text-danger">Editorial requerido</div>}
             <label for="anio_publicacion" class="form-label">Año de publicación</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('anio_publicacion') }" type="number" class="form-control" formControlName="anio_publicacion" placeholder="año de publicación...">
+            <input  [ngClass]="{'is-invalid': hasErrors('anio_publicacion') }" type="number" min="1900" max="2024" class="form-control" formControlName="anio_publicacion" placeholder="año de publicación...">
             @if (hasErrors('anio_publicacion')) {<div class="text-danger">Año publicación requerido</div>}
+            <label for="monto" class="form-label">Monto</label>
+            <input  [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control"formControlName="monto" placeholder="monto...">
+            @if(hasErrors('monto')){<div class="text-danger">monto requerido</div>}
         </div>
-        <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-secondary">Guardar</button>
+        <div class="container text-center">
+            <button   type="submit" class="btn btn-secondary">Guardar</button>
     </div>
 </form>
+<div class="container text-center">
+    <a class="nav-link" routerLink="/bibliografias">
+        <button  type="submit" class="btn btn-secondary " >Cancelar</button>
+    </a>
+</div> 
 </div>
 

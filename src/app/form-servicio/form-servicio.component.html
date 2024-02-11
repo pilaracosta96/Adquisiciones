@@ -1,8 +1,10 @@
-<h3 class="d-flex justify-content-center"> Formulario de carga </h3>
+<h3 class="d-flex justify-content-center"> Formulario de carga de Servicios</h3>
+<br>
+<br>
 
-<div class="container text-center" style="margin-left: 300px;" >
+<div class="container text-center"  >
     <form [formGroup]="formularioServicio" class="row g-3" (ngSubmit)="enviar()">
-    <div class="col-md-8">
+    <div  class="col-md-4 container text-center">
         <label for="tipo_servicio" class="form-label">Tipo de Servicio </label>
         <input [ngClass]="{'is-invalid': hasErrors('tipo_servicio') }" type="text" class="form-control" formControlName="tipo_servicio" placeholder="Tipo de Servicio...">
         @if (hasErrors('tipo_servicio')) {<div class="text-danger">Tipo de servicio requerido</div>}
@@ -12,13 +14,17 @@
         @if (hasErrors('monto')) {<div class="text-danger">monto requerido</div>}
         
         <label for="fecha" class="form-label">Fecha </label>
-        <input [ngClass]="{'is-invalid': hasErrors('fecha') }" type="number" class="form-control" formControlName="fecha" placeholder="Fecha...">
+        <input [ngClass]="{'is-invalid': hasErrors('fecha') }" type="date" class="form-control" formControlName="fecha" placeholder="Fecha...">
         @if (hasErrors('fecha')) {<div class="text-danger">Fecha requerido</div>}
     </div>
 
 
-    <div class="col-8 d-flex justify-content-center">
+    <div class="container text-center">
         <button type="submit" class="btn btn-secondary">Guardar</button>
     </div>
 </form>
+<div class="container text-center"><a class="nav-link" routerLink="/servicios">
+    <button  type="submit" class="btn btn-secondary" (click)="limpiar()">Cancelar</button>
+</a>
+</div>
 </div>

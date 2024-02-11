@@ -16,6 +16,8 @@ export class ApiService {
   private _http = inject(HttpClient);
   private _urlBase: string ="http://localhost:8080/api";
 
+
+  // LISTAR
   getBibliografias():Observable<IBibliografia[]>{
     return this._http.get<IBibliografia[]>(`${this._urlBase}/bibliografias/listar`);
   }
@@ -36,14 +38,16 @@ export class ApiService {
     return this._http.get<IInfra[]>(`${this._urlBase}/equipoInfraestructura/listar`)
   }
 
+  // Guardar
+
   postGuardarBibliografia(data?: string): Observable<string> {
     const headers = { 'Content-Type': 'application/json' };
     return this._http.post<string>(this._urlBase+'/bibliografias/guardar', data, {headers})
     .pipe(
       catchError(this.handleHttpError)
     );
-      
   }
+
   postGuardarLicencia(data?: string): Observable<string> {
     const headers = { 'Content-Type': 'application/json' };
     return this._http.post<string>(this._urlBase+'/licenciaSoftware/guardar', data, {headers})
@@ -67,6 +71,36 @@ export class ApiService {
       catchError(this.handleHttpError)
     );
       
+  }
+
+  // ELIMINAR
+  delEliminarPorISBN(data: number): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.delete<string>(this._urlBase+'/bibliografias/eliminarPorISBN/'+ data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+  }
+  delEliminarLicenciaPorId(data: number): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.delete<string>(this._urlBase+'/licenciaSoftware/eliminarPorId/'+ data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+  }
+  delEliminarServicioPorId(data: number): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.delete<string>(this._urlBase+'/servicio/eliminarPorId/'+ data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
+  }
+  delEliminarEquipoPorId(data: number): Observable<string> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this._http.delete<string>(this._urlBase+'/equipoInfraestructura/eliminarPorId/'+ data, {headers})
+    .pipe(
+      catchError(this.handleHttpError)
+    );
   }
 
   private handleHttpError(error: HttpErrorResponse): Observable<never> {

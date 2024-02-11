@@ -33,11 +33,14 @@ export class FormServicioComponent {
       console.error('Error al enviar datos:', error);
   }
   );
-    
+  this.limpiar();
   }
 
   hasErrors(controlName:string) {
     return this.formularioServicio.get(controlName)?.hasError('required') && this.formularioServicio.get(controlName)?.touched;
   }
-
+   
+  limpiar(){
+    this.formularioServicio.reset();
+  }
 }

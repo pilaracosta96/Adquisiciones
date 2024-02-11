@@ -39,10 +39,15 @@ export class FormBiblioComponent {
       console.error('Error al enviar datos:', error);
   }
   );
+  this.limpiar();
     
   }
 
   hasErrors(controlName:string) {
     return this.formularioBiblio.get(controlName)?.hasError('required') && this.formularioBiblio.get(controlName)?.touched;
+  }
+
+  limpiar(){
+    this.formularioBiblio.reset();
   }
 }

@@ -20,8 +20,8 @@ export class BibliografiaComponent  implements OnInit{
   nombre: string ="Bibliografía"
   private _router = inject(Router)
   item: any;
-  si?: boolean;
- 
+  
+  
   
   ngOnInit(): void {
     this._apiService.getBibliografias().subscribe((data:IBibliografia[]) =>{
@@ -32,16 +32,16 @@ export class BibliografiaComponent  implements OnInit{
   
   seleccion(item: any){
     this.item = item;
-    
   }
   
-  cerrar(){
-    this.si=false;
-    console.log("cerrado");
+  cerrar($event: boolean){
+    this.item.isSelected = $event;
   }
 
-  eliminar(){
-    console.log("eliminado");
+  eliminar(isbn: number){
+    
+    this._apiService.delEliminarPorISBN(isbn).subscribe(response => {alert(JSON.stringify(response))});
+    this.ngOnInit();
   }
   
  

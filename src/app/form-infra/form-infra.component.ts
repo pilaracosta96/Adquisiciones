@@ -39,11 +39,15 @@ export class FormInfraComponent {
       console.error('Error al enviar datos:', error);
   }
   );
-    
+  this.limpiar();
   }
 
   hasErrors(controlName:string) {
     return this.formularioInfra.get(controlName)?.hasError('required') && this.formularioInfra.get(controlName)?.touched;
+  }
+
+  limpiar(){
+    this.formularioInfra.reset();
   }
 
 }

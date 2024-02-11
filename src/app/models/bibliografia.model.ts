@@ -10,6 +10,7 @@ export interface IBibliografia {
     monto:           number;
     eliminada:       boolean;
     tipoMaterial:    TipoMaterial;
+    isSelected:      boolean;
 }
 
 export interface Editorial {

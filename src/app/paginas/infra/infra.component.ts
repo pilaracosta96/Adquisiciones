@@ -25,4 +25,13 @@ export class InfraComponent implements OnInit{
     this.item = item;
 
   }
+
+  cerrar($event: boolean){
+    this.item.isSelected = $event;
+  }
+  
+  eliminar(id: number){
+    
+    this._apiService.delEliminarEquipoPorId(id).subscribe(response => {alert(JSON.stringify(response))});
+  }
 }

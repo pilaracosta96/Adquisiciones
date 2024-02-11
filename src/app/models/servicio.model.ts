@@ -4,6 +4,7 @@ export interface IServicio {
     monto:        number;
     tipoServicio: TipoServicio;
     eliminada:    boolean;
+    isSelected:   boolean;
 }
 
 export interface TipoServicio {

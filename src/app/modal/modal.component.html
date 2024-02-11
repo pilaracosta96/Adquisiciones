@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=#a>
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=#a (click)="seleccionar()">
   Ver más
 </button>
 
@@ -12,11 +12,132 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{objeto | json}}
+       <div [ngSwitch]="titulo">
+        <span *ngSwitchCase="'Bibliografía'">
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Título</li>
+            <li class="list-group-item">{{biblio?.titulo}}</li>
+            </ul>
+            <ul  class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Nombre del Autor</li>
+            <li class="list-group-item">{{biblio?.nombreAutor}}</li>
+            </ul>
+            <ul  class="list-group list-group-horizontal-sm" >
+
+              <li class="list-group-item">Apellido</li>
+              <li class="list-group-item">{{biblio?.apellidoAutor}}</li>
+            </ul>
+            <ul  class="list-group list-group-horizontal-sm">
+
+              <li class="list-group-item">ISBN</li>
+              <li class="list-group-item">{{biblio?.isbn}}</li>
+            </ul>
+            <ul  class="list-group list-group-horizontal-sm">
+
+              <li class="list-group-item">ISSN</li>
+              <li class="list-group-item">{{biblio?.issn}}</li>
+            </ul>
+            <ul  class="list-group list-group-horizontal-sm">
+
+              <li class="list-group-item">Tipo de Material</li>
+              <li class="list-group-item">{{biblio?.tipoMaterial?.nombreTipoMaterial}}</li>
+            </ul> <ul  class="list-group list-group-horizontal-sm">
+
+              <li class="list-group-item">Monto</li>
+              <li class="list-group-item">{{biblio?.monto}}</li>
+            </ul>
+            <ul  class="list-group list-group-horizontal-sm">
+
+              <li class="list-group-item">Editorial</li>
+              <li class="list-group-item">{{biblio?.editorial?.nombreEditorial}}</li>
+            </ul><ul  class="list-group list-group-horizontal-sm" >
+            <li class="list-group-item">Año de publicaciòn</li>
+            <li class="list-group-item">{{biblio?.anioPublicacion}}</li>
+          </ul>
+        </span>
+        <span *ngSwitchCase="'Licencias de Software'">
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Nombre</li>
+            <li class="list-group-item">{{licencia?.nombre}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Versión</li>
+            <li class="list-group-item">{{licencia?.version}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Número de Release</li>
+            <li class="list-group-item">{{licencia?.numeroRelease}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Fecha de otorgamiento</li>
+            <li class="list-group-item">{{licencia?.fechaOtorgamiento}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Fecha de Vencimiento</li>
+            <li class="list-group-item">{{licencia?.fechaVencimiento}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Monto</li>
+            <li class="list-group-item">{{licencia?.monto}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Fabricante</li>
+            <li class="list-group-item">{{licencia?.fabricante?.nombreFabricante}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Año</li>
+            <li class="list-group-item">{{licencia?.anio}}</li>
+            </ul>
+        </span>
+        <span *ngSwitchCase="'Equipos de Infraestructura'">
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Descripción</li>
+            <li class="list-group-item">{{infra?.descripcion}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Fecha de incorporación</li>
+            <li class="list-group-item">{{infra?.fechaIncorporacion}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Tipo de equipo</li>
+            <li class="list-group-item">{{infra?.tipoEquipo?.nombreTipoEquipo}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Cantidad de ese equipo</li>
+            <li class="list-group-item">{{infra?.tipoEquipo?.cantidad}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Precio Unitario</li>
+            <li class="list-group-item">{{infra?.tipoEquipo?.precioUnitario}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Nº serie</li>
+            <li class="list-group-item">{{infra?.numeroSerie}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Motno</li>
+            <li class="list-group-item">{{infra?.monto}}</li>
+            </ul>
+        </span>
+        <span *ngSwitchCase="'Servicios'">
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Tipo de Servicio</li>
+            <li class="list-group-item">{{servicio?.tipoServicio?.nombreTipoServicio}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Fecha</li>
+            <li class="list-group-item">{{servicio?.fecha}}</li>
+            </ul>
+          <ul class="list-group list-group-horizontal-sm">
+            <li class="list-group-item">Monto</li>
+            <li class="list-group-item">{{servicio?.monto}}</li>
+            </ul>
+        </span>
+        <span *ngSwitchDefault>Valor no válido</span>
+       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCheck()">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guargar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCheck()">Aceptar</button>
       </div>
     </div>
   </div>

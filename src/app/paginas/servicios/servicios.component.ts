@@ -27,4 +27,14 @@ private _apiService = inject(ApiService)
     this.item = item;
 
   }
+
+  cerrar($event: boolean){
+    this.item.isSelected = $event;
+  }
+  
+  eliminar(id: number){
+    
+    this._apiService.delEliminarServicioPorId(id).subscribe(response => {alert(JSON.stringify(response))});
+    this.ngOnInit();
+  }
 }
