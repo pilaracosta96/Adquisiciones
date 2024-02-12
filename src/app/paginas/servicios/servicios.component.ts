@@ -15,27 +15,51 @@ export class ServiciosComponent implements OnInit {
 
   nombre = 'Servicios';
   item: any;
+  listaCheck: any[] = [];
+
 
   ngOnInit(): void {
     this._apiService.getServicios().subscribe((data: IServicio[]) => {
       this.servicios = data;
     });
   }
-
-  seleccion(item: any) {
-    this.item = item;
-  }
-
   cerrar($event: boolean) {
     this.item.isSelected = $event;
   }
 
-  eliminar(id: number) {
+  seleccion(item: any) {
+    this.item = item;
+    const index = this.listaCheck.findIndex(
+      (selectedItem) => selectedItem.isbn === item.id
+    );
+
+    if (index === -1) {
+      // Si no está en la lista, agrégalo
+      this.listaCheck.push(item);
+    } else {
+      // Si ya está en la lista, quítalo (deselección)
+      this.listaCheck.splice(index, 1);
+    }
+  }
+
+
+  eliminar(isbn: number) {
+    if (this.listaCheck.length === 0) {
+      // Si la lista de selección está vacía, muestra un mensaje de alerta
+      Swal.fire({
+        title: 'Ningún elemento seleccionado',
+        text: 'Por favor, seleccione elementos para eliminar',
+        icon: 'warning',
+      });
+      return; // No hay elementos para eliminar, sal del método
+    }
+
     // alert
 
+    // Alerta de confirmación
     Swal.fire({
-      title: '¿Está seguro de eliminar este elemento?',
-      text: 'Se eliminará : ' + this.item.tipoServicio.nombreTipoServicio,
+      title: '¿Está seguro de eliminar estos elementos?',
+      text: 'Se eliminarán ' + this.listaCheck.length + ' elementos',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -43,17 +67,24 @@ export class ServiciosComponent implements OnInit {
       confirmButtonText: 'Sí, eliminar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this._apiService.delEliminarServicioPorId(id).subscribe((response) => {
-          Swal.fire({
-            title: 'Elimiado!',
-            text: response.mensaje,
-            icon: 'success',
+        // Itera sobre la lista de selección y elimina cada elemento
+        for (const selectedItem of this.listaCheck) {
+          this._apiService.delEliminarServicioPorId(selectedItem.id).subscribe((response) => {
+            // Puedes manejar la respuesta de la API si es necesario
           });
-          // loading
-          setTimeout(() => {
-            this.ngOnInit();
-          }, 150);
+        }
+  
+        Swal.fire({
+          title: 'Eliminados',
+          text: 'Elementos eliminados correctamente',
+          icon: 'success',
         });
+  
+        // Limpia la lista de selección
+        this.listaCheck = [];
+        setTimeout(() => {
+          this.ngOnInit();
+        }, 150);
       }
     });
   }
