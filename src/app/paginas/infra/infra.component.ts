@@ -33,5 +33,8 @@ export class InfraComponent implements OnInit{
   eliminar(id: number){
     
     this._apiService.delEliminarEquipoPorId(id).subscribe(response => {alert(JSON.stringify(response))});
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 150);
   }
 }

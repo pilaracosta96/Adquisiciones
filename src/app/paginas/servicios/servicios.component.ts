@@ -35,6 +35,8 @@ private _apiService = inject(ApiService)
   eliminar(id: number){
     
     this._apiService.delEliminarServicioPorId(id).subscribe(response => {alert(JSON.stringify(response))});
-    this.ngOnInit();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 150);
   }
 }

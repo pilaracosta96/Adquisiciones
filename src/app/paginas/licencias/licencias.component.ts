@@ -33,6 +33,9 @@ export class LicenciasComponent implements OnInit{
   eliminar(id: number){
     
     this._apiService.delEliminarLicenciaPorId(id).subscribe(response => {alert(JSON.stringify(response))});
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 150);
   }
 
   

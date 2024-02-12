@@ -41,7 +41,9 @@ export class BibliografiaComponent  implements OnInit{
   eliminar(isbn: number){
     
     this._apiService.delEliminarPorISBN(isbn).subscribe(response => {alert(JSON.stringify(response))});
-    this.ngOnInit();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 150);
   }
   
  
