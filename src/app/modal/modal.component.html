@@ -44,7 +44,7 @@
             </ul> <ul  class="list-group list-group-horizontal-sm">
 
               <li class="list-group-item">Monto:</li>
-              <li class="list-group-item">{{biblio?.monto}}</li>
+              <li class="list-group-item">{{biblio?.monto | currency}} </li>
             </ul>
             <ul  class="list-group list-group-horizontal-sm">
 
@@ -78,7 +78,7 @@
             </ul>
           <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Monto:</li>
-            <li class="list-group-item">{{licencia?.monto}}</li>
+            <li class="list-group-item">{{licencia?.monto | currency}}</li>
             </ul>
           <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Fabricante:</li>
@@ -108,7 +108,7 @@
             </ul>
           <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Precio unitario:</li>
-            <li class="list-group-item">{{infra?.tipoEquipo?.precioUnitario}}</li>
+            <li class="list-group-item">{{infra?.tipoEquipo?.precioUnitario | currency}}</li>
             </ul>
           <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Nº serie:</li>
@@ -116,7 +116,7 @@
             </ul>
           <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Monto:</li>
-            <li class="list-group-item">{{infra?.monto}}</li>
+            <li class="list-group-item">{{infra?.monto | currency}} </li>
             </ul>
         </span>
         <span *ngSwitchCase="'Servicios'">
@@ -130,7 +130,7 @@
             </ul>
           <ul class="list-group list-group-horizontal-sm">
             <li class="list-group-item">Monto:</li>
-            <li class="list-group-item">{{servicio?.monto}}</li>
+            <li class="list-group-item">{{servicio?.monto | currency}} </li>
             </ul>
         </span>
         <span *ngSwitchDefault>Valor no válido</span>
