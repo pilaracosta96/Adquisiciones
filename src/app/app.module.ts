@@ -16,6 +16,7 @@ import { FormInfraComponent } from './form-infra/form-infra.component';
 import { FormServicioComponent } from './form-servicio/form-servicio.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { ModalComponent } from './modal/modal.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -39,7 +40,8 @@ import { ModalComponent } from './modal/modal.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     provideClientHydration(), provideHttpClient(withFetch())

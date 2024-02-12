@@ -18,6 +18,8 @@ export class BibliografiaComponent implements OnInit {
   private _router = inject(Router);
   item: any;
   listaCheck: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
 
   ngOnInit(): void {
     this._apiService.getBibliografias().subscribe((data: IBibliografia[]) => {

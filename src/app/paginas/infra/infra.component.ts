@@ -13,9 +13,11 @@ export class InfraComponent implements OnInit {
   nombre = 'Equipos de Infraestructura';
   private _apiService = inject(ApiService);
 
-  equipos?: IInfra[];
+  equipos: IInfra[]=[];
   item: any;
   listaCheck: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
 
   ngOnInit(): void {
     this._apiService.getEquipos().subscribe((data: IInfra[]) => {

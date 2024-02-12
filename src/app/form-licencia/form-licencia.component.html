@@ -85,9 +85,9 @@
       }
 
       <label for="anio" class="form-label">Año de publicación</label>
-      <select
+      <select aria-label="Default select example"
         [ngClass]="{ 'is-invalid': hasErrors('anio', 'required') }"
-        class="form-control"
+        class="form-control form-select"
         formControlName="anio"
       >
         <option value="" disabled selected>Seleccione un año</option>

@@ -9,13 +9,15 @@ import Swal from 'sweetalert2';
   styleUrl: './servicios.component.css',
 })
 export class ServiciosComponent implements OnInit {
-  servicios?: IServicio[];
+  servicios: IServicio[] = [];
 
   private _apiService = inject(ApiService);
 
   nombre = 'Servicios';
   item: any;
   listaCheck: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
 
 
   ngOnInit(): void {

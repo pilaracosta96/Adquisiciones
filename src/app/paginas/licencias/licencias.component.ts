@@ -10,12 +10,14 @@ import Swal from 'sweetalert2';
   styleUrl: './licencias.component.css',
 })
 export class LicenciasComponent implements OnInit {
-  licencias?: ILicencia[];
+  licencias: ILicencia[] = [];
   private _apiService = inject(ApiService);
   private _ruta = inject(ActivatedRoute);
   nombre = 'Licencias de Software';
   item: any;
   listaCheck: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
 
   ngOnInit(): void {
     this._apiService.getLicencias().subscribe((data: ILicencia[]) => {
