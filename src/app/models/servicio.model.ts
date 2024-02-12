@@ -1,6 +1,6 @@
 export interface IServicio {
     id:           number;
-    fecha:        number;
+    fecha:        string;
     monto:        number;
     tipoServicio: TipoServicio;
     eliminada:    boolean;

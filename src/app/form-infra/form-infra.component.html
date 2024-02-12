@@ -10,7 +10,7 @@
             @if (hasErrors('tipo_equipo')) {<div class="text-danger">Tipo de equipo requerido</div>}
             
             <label for="fecha_incorporacion" class="form-label">Fecha de incorporación</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fecha_incorporacion') }" type="number" class="form-control" formControlName="fecha_incorporacion" placeholder="Fecha...">
+            <input [ngClass]="{'is-invalid': hasErrors('fecha_incorporacion') }" type="date" class="form-control" formControlName="fecha_incorporacion" placeholder="Fecha...">
             @if (hasErrors('fecha_incorporacion')) {<div class="text-danger">fecha requerido</div>}
             
             
@@ -20,7 +20,7 @@
             
             
             <label for="numero_serie" class="form-label">Nº serie</label>
-            <input [ngClass]="{'is-invalid': hasErrors('numero_serie') }" type="number" class="form-control"formControlName="numero_serie" placeholder="Número de serie...">
+            <input [ngClass]="{'is-invalid': hasErrors('numero_serie') }" type="text" class="form-control"formControlName="numero_serie" placeholder="Número de serie...">
             @if (hasErrors('numero_serie')) {<div class="text-danger">numero de serie requerido</div>}
             
             <label for="monto" class="form-label">Monto</label>

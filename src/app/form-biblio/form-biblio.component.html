@@ -1,3 +1,4 @@
+
 <h3 class="d-flex justify-content-center"> Formulario de carga de Bibliografias</h3>
 
 <div class="container" >
@@ -33,7 +34,7 @@
             <input  [ngClass]="{'is-invalid': hasErrors('editorial', 'required') }" type="text" class="form-control" formControlName="editorial" placeholder="editorial...">
             @if (hasErrors('editorial', 'required')) {<div class="text-danger">Editorial requerido</div>}
             <label for="anio_publicacion" class="form-label">Año de publicación</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('anio_publicacion', 'required') }" type="number" min="1900" max="2024" class="form-control" formControlName="anio_publicacion" placeholder="año de publicación...">
+            <input  [ngClass]="{'is-invalid': hasErrors('anio_publicacion', 'required') }" type="date" min="1900" max="2024" class="form-control" formControlName="anio_publicacion" placeholder="año de publicación...">
             @if (hasErrors('anio_publicacion', 'required')) {<div class="text-danger">Año publicación requerido</div>}
             <label for="monto" class="form-label">Monto</label>
             <input  [ngClass]="{'is-invalid': hasErrors('monto', 'required') }" type="number" class="form-control"formControlName="monto" placeholder="monto...">
@@ -44,7 +45,7 @@
     </div>
 </form>
 <div class="container text-center ">
-    <button  type="submit" class="btn btn-secondary " (click)="cancelar()">Cancelar</button>
+    <button style="margin-right: 30px;" type="submit" class="btn btn-secondary " (click)="cancelar()">Cancelar</button>
 </div> 
 </div>
 

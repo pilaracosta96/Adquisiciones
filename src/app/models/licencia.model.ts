@@ -1,12 +1,12 @@
 export interface ILicencia {
     id:                number;
     nombre:            string;
-    anio:              number;
-    fechaOtorgamiento: number;
-    fechaVencimiento:  number;
+    anio:              string;
+    fechaOtorgamiento: string;
+    fechaVencimiento:  string;
     fabricante:        Fabricante;
-    numeroRelease:     number;
-    version:           number;
+    numeroRelease:     null | string;
+    version:           null | string;
     monto:             number;
     eliminada:         boolean;
     isSelected:        boolean;

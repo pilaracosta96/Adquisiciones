@@ -3,7 +3,7 @@ export interface IBibliografia {
     titulo:          string;
     nombreAutor:     string;
     apellidoAutor:   string;
-    anioPublicacion: number;
+    anioPublicacion: string;
     editorial:       Editorial;
     isbn:            number;
     issn:            number;
