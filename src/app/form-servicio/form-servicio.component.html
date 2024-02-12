@@ -1,29 +1,54 @@
-<h3 class="d-flex justify-content-center"> Formulario de carga de Servicios</h3>
-<br>
-<br>
+<h3 class="d-flex justify-content-center">Formulario de carga de Servicios</h3>
+<br />
+<br />
 
-<div class="container text-center"  >
-    <form [formGroup]="formularioServicio" class="row g-3" (ngSubmit)="enviar()">
-    <div  class="col-md-4 container text-center">
-        <label for="tipo_servicio" class="form-label">Tipo de Servicio </label>
-        <input [ngClass]="{'is-invalid': hasErrors('tipo_servicio') }" type="text" class="form-control" formControlName="tipo_servicio" placeholder="Tipo de Servicio...">
-        @if (hasErrors('tipo_servicio')) {<div class="text-danger">Tipo de servicio requerido</div>}
-        
-        <label for="monto" class="form-label">Monto </label>
-        <input [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control" formControlName="monto" placeholder="monto...">
-        @if (hasErrors('monto')) {<div class="text-danger">monto requerido</div>}
-        
-        <label for="fecha" class="form-label">Fecha </label>
-        <input [ngClass]="{'is-invalid': hasErrors('fecha') }" type="date" class="form-control" formControlName="fecha" placeholder="Fecha...">
-        @if (hasErrors('fecha')) {<div class="text-danger">Fecha requerido</div>}
+<div class="container text-center">
+  <form [formGroup]="formularioServicio" class="row g-3" (ngSubmit)="enviar()">
+    <div class="col-md-4 container text-center">
+      <label for="tipo_servicio" class="form-label">Tipo de Servicio </label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('tipo_servicio') }"
+        type="text"
+        class="form-control"
+        formControlName="tipo_servicio"
+        placeholder="Tipo de Servicio..."
+      />
+      @if (hasErrors('tipo_servicio')) {
+      <div class="text-danger">Tipo de servicio requerido</div>
+      }
+
+      <label for="monto" class="form-label">Monto </label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('monto') }"
+        type="number"
+        class="form-control"
+        formControlName="monto"
+        placeholder="monto..."
+      />
+      @if (hasErrors('monto')) {
+      <div class="text-danger">monto requerido</div>
+      }
+
+      <label for="fecha" class="form-label">Fecha </label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('fecha') }"
+        type="date"
+        class="form-control"
+        formControlName="fecha"
+        placeholder="Fecha..."
+      />
+      @if (hasErrors('fecha')) {
+      <div class="text-danger">Fecha requerido</div>
+      }
     </div>
-
 
     <div class="container text-center">
-        <button type="submit" class="btn btn-secondary">Guardar</button>
+      <button type="submit" class="btn btn-secondary">Guardar</button>
     </div>
-</form>
-<div class="container text-center">
-    <button  type="submit" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-</div>
+  </form>
+  <div class="container text-center">
+    <button type="submit" class="btn btn-secondary" (click)="cancelar()">
+      Cancelar
+    </button>
+  </div>
 </div>

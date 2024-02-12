@@ -7,16 +7,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-licencia',
   templateUrl: './form-licencia.component.html',
-  styleUrl: './form-licencia.component.css'
+  styleUrl: './form-licencia.component.css',
 })
 export class FormLicenciaComponent {
   formularioLicencia: FormGroup;
-  private ruta = inject (Router);
+  private ruta = inject(Router);
   private _apiService = inject(ApiService);
   anios: any[] = [];
 
-
-  constructor( private form: FormBuilder){
+  constructor(private form: FormBuilder) {
     this.formularioLicencia = this.form.group({
       anio: ['', Validators.required],
       fecha_otorgamiento: ['', Validators.required],
@@ -25,8 +24,7 @@ export class FormLicenciaComponent {
       nombre: ['', Validators.required],
       numero_release: ['', Validators.required],
       fabricante: ['', Validators.required],
-      version: ['', Validators.required]
-
+      version: ['', Validators.required],
     });
     this.generarAnios();
   }
@@ -37,53 +35,57 @@ export class FormLicenciaComponent {
       this.anios.push(i);
     }
   }
- 
-  enviar(){
-   
-    this._apiService.postGuardarLicencia(JSON.stringify(this.formularioLicencia.value)).subscribe(response => {
-      Swal.fire({
-        title: "Guardado!",
-        text: response.mensaje,
-        icon: "success"
-      });
-      this.limpiar();
-  },
-  error => {
-    Swal.fire({
-      icon: "error",
-      title: "Error al enviar datos"+ error.mensaje,
-      text: "Algo salió mal",
-      footer: '<a >Verifique los campos por favor</a>'
-    });
-  }
-  );
 
-  console.log(this.formularioLicencia.value);
-  }
+  enviar() {
+    this._apiService
+      .postGuardarLicencia(JSON.stringify(this.formularioLicencia.value))
+      .subscribe(
+        (response) => {
+          Swal.fire({
+            title: 'Guardado!',
+            text: response.mensaje,
+            icon: 'success',
+          });
+          this.limpiar();
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al enviar datos' + error.mensaje,
+            text: 'Algo salió mal',
+            footer: '<a >Verifique los campos por favor</a>',
+          });
+        }
+      );
 
-  hasErrors(controlName:string , typeError: string) {
-    return this.formularioLicencia.get(controlName)?.hasError(typeError) && this.formularioLicencia.get(controlName)?.touched;
+    console.log(this.formularioLicencia.value);
   }
 
-  limpiar(){
+  hasErrors(controlName: string, typeError: string) {
+    return (
+      this.formularioLicencia.get(controlName)?.hasError(typeError) &&
+      this.formularioLicencia.get(controlName)?.touched
+    );
+  }
+
+  limpiar() {
     this.formularioLicencia.reset();
   }
 
-  cancelar(){
+  cancelar() {
     Swal.fire({
-      title: "Desea abandonar la página?, se perderán los cambios",
+      title: 'Desea abandonar la página?, se perderán los cambios',
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Guardar",
-      denyButtonText: `No guardar`
+      confirmButtonText: 'Guardar',
+      denyButtonText: `No guardar`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.enviar();
       } else if (result.isDenied) {
-        this.ruta.navigate(['/licencias'])
+        this.ruta.navigate(['/licencias']);
       }
     });
   }
-
 }

@@ -7,18 +7,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-infra',
   templateUrl: './form-infra.component.html',
-  styleUrl: './form-infra.component.css'
+  styleUrl: './form-infra.component.css',
 })
 export class FormInfraComponent {
-
-
-  
   formularioInfra: FormGroup;
 
   private _apiService = inject(ApiService);
-  private ruta = inject (Router);
+  private ruta = inject(Router);
 
-  constructor( private form: FormBuilder){
+  constructor(private form: FormBuilder) {
     this.formularioInfra = this.form.group({
       tipo_equipo: ['', Validators.required],
       fecha_incorporacion: ['', Validators.required],
@@ -26,58 +23,58 @@ export class FormInfraComponent {
       numero_serie: ['', Validators.required],
       monto: ['', Validators.required],
       cantidad: ['', Validators.required],
-      precio_unitario: ['', Validators.required]
-    })
-  }
-  
-  
-
-
-  enviar(){
-   
-    this._apiService.postGuardarEquipo(JSON.stringify(this.formularioInfra.value)).subscribe(response => {
-      Swal.fire({
-        title: "Guardado!",
-        text: response.mensaje,
-        icon: "success"
-      });
-      this.limpiar();
-  },
-  error => {
-    Swal.fire({
-      icon: "error",
-      title: "Error al enviar datos"+ error.mensaje,
-      text: "Algo salió mal",
-      footer: '<a >Verifique los campos por favor</a>'
+      precio_unitario: ['', Validators.required],
     });
   }
-  );
+
+  enviar() {
+    this._apiService
+      .postGuardarEquipo(JSON.stringify(this.formularioInfra.value))
+      .subscribe(
+        (response) => {
+          Swal.fire({
+            title: 'Guardado!',
+            text: response.mensaje,
+            icon: 'success',
+          });
+          this.limpiar();
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al enviar datos' + error.mensaje,
+            text: 'Algo salió mal',
+            footer: '<a >Verifique los campos por favor</a>',
+          });
+        }
+      );
   }
 
-  hasErrors(controlName:string) {
-    return this.formularioInfra.get(controlName)?.hasError('required') && this.formularioInfra.get(controlName)?.touched;
+  hasErrors(controlName: string) {
+    return (
+      this.formularioInfra.get(controlName)?.hasError('required') &&
+      this.formularioInfra.get(controlName)?.touched
+    );
   }
 
-  limpiar(){
+  limpiar() {
     this.formularioInfra.reset();
   }
 
-  cancelar(){
+  cancelar() {
     Swal.fire({
-      title: "Desea abandonar la página?, se perderán los cambios",
+      title: 'Desea abandonar la página?, se perderán los cambios',
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Guardar",
-      denyButtonText: `No guardar`
+      confirmButtonText: 'Guardar',
+      denyButtonText: `No guardar`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.enviar();
       } else if (result.isDenied) {
-        this.ruta.navigate(['/infra'])
+        this.ruta.navigate(['/infra']);
       }
     });
   }
-
 }
-

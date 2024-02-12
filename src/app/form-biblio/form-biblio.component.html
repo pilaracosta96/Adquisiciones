@@ -1,56 +1,138 @@
+<h3 class="d-flex justify-content-center">
+  Formulario de carga de Bibliografias
+</h3>
 
-<h3 class="d-flex justify-content-center"> Formulario de carga de Bibliografias</h3>
-
-<div class="container" >
-    <form [formGroup]="formularioBiblio" class="row g-3" (ngSubmit)="enviar()">
-        <div class="col-md-4">
-            <label for="titulo" class="form-label">Título</label>
-            <input [ngClass]="{'is-invalid': hasErrors('titulo' , 'required') }" type="text" class="form-control" formControlName="titulo" placeholder="título...">
-            @if (hasErrors('titulo', 'required')) {
-            <div class="text-danger">Título requerido</div>}
-            <label for="nombre_autor" class="form-label">Nombre del Autor</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('nombre_autor', 'required') }" type="text" class="form-control" formControlName="nombre_autor" placeholder="nombre..." >
-            @if (hasErrors('nombre_autor', 'required')){<div class="text-danger">Nombre de autor requerido</div>}
-            <label for="apellido_autor" class="form-label">Apellido del Autor</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('apellido_autor', 'required') }" type="text" class="form-control" formControlName="apellido_autor"  placeholder="apellido...">
-            @if (hasErrors('apellido_autor', 'required')){<div class="text-danger">Apellido de autor requerido</div>}
-            
-        </div>
-        <div class="col-md-4">
-            <label for="isbn" class="form-label">ISBN</label>
-            <input  [ngClass]="{'is-invalid': (hasErrors('isbn', 'required') || hasErrors('isbn', 'minlength') || hasErrors('isbn','maxlength'))}" type="number" class="form-control" formControlName="isbn" placeholder="Nº de ISBN...">
-            <!-- @if (hasErrors('isbn', 'minLength')) {<div class="text-danger">ISBN requiere 13 dígitos</div>} -->
-            @if (hasErrors('isbn', 'maxlength')) {<div class="text-danger">ISBN requiere 13 dígitos</div>}
-            @if(hasErrors('isbn', 'required')){<div class="text-danger">ISBN requerido</div>}
-            <label for="issn" class="form-label">ISSN</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('issn', 'required') }" type="number" class="form-control" formControlName="issn" placeholder="Nº de ISSN...">
-            @if (hasErrors('issn', 'required')) {<div class="text-danger">ISSN requerido</div>}
-            <label for="tipo_material" class="form-label">Tipo de material</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('tipo_material', 'required') }" type="text" class="form-control" formControlName="tipo_material" placeholder="tipo de material...">
-            @if (hasErrors('tipo_material', 'required')) {<div class="text-danger">Tipo de material requerido</div>}
-         </div>
-        <div class="col-md-4">
-            <label for="editorial" class="form-label">Editorial</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('editorial', 'required') }" type="text" class="form-control" formControlName="editorial" placeholder="editorial...">
-            @if (hasErrors('editorial', 'required')) {<div class="text-danger">Editorial requerido</div>}
-            <label for="anio_publicacion" class="form-label">Año de publicación</label>
-            <select [ngClass]="{'is-invalid': hasErrors('anio_publicacion', 'required') }"
-                class="form-control" formControlName="anio_publicacion" >
-                <option value="" disabled selected>Seleccione un año</option>
-                <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
-            </select>
-            @if(hasErrors('anio_publicacion', 'required')){<div class="text-danger">Año de publicación requerido</div>}
-
-            <label for="monto" class="form-label">Monto</label>
-            <input  [ngClass]="{'is-invalid': hasErrors('monto', 'required') }" type="number" class="form-control"formControlName="monto" placeholder="monto...">
-            @if(hasErrors('monto', 'required')){<div class="text-danger">monto requerido</div>}
-        </div>
-        <div class="container text-center">
-            <button   type="submit" class="btn btn-secondary">Guardar</button>
+<div class="container">
+  <form [formGroup]="formularioBiblio" class="row g-3" (ngSubmit)="enviar()">
+    <div class="col-md-4">
+      <label for="titulo" class="form-label">Título</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('titulo', 'required') }"
+        type="text"
+        class="form-control"
+        formControlName="titulo"
+        placeholder="título..."
+      />
+      @if (hasErrors('titulo', 'required')) {
+      <div class="text-danger">Título requerido</div>
+      }
+      <label for="nombre_autor" class="form-label">Nombre del Autor</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('nombre_autor', 'required') }"
+        type="text"
+        class="form-control"
+        formControlName="nombre_autor"
+        placeholder="nombre..."
+      />
+      @if (hasErrors('nombre_autor', 'required')){
+      <div class="text-danger">Nombre de autor requerido</div>
+      }
+      <label for="apellido_autor" class="form-label">Apellido del Autor</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('apellido_autor', 'required') }"
+        type="text"
+        class="form-control"
+        formControlName="apellido_autor"
+        placeholder="apellido..."
+      />
+      @if (hasErrors('apellido_autor', 'required')){
+      <div class="text-danger">Apellido de autor requerido</div>
+      }
     </div>
-</form>
-<div class="container text-center ">
-    <button style="margin-right: 30px;" type="submit" class="btn btn-secondary " (click)="cancelar()">Cancelar</button>
-</div> 
-</div>
+    <div class="col-md-4">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('isbn', 'required') ||
+            hasErrors('isbn', 'minlength') ||
+            hasErrors('isbn', 'maxlength')
+        }"
+        type="number"
+        class="form-control"
+        formControlName="isbn"
+        placeholder="Nº de ISBN..."
+      />
+      <!-- @if (hasErrors('isbn', 'minLength')) {<div class="text-danger">ISBN requiere 13 dígitos</div>} -->
+      @if (hasErrors('isbn', 'maxlength')) {
+      <div class="text-danger">ISBN requiere 13 dígitos</div>
+      } @if(hasErrors('isbn', 'required')){
+      <div class="text-danger">ISBN requerido</div>
+      }
+      <label for="issn" class="form-label">ISSN</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('issn', 'required') }"
+        type="number"
+        class="form-control"
+        formControlName="issn"
+        placeholder="Nº de ISSN..."
+      />
+      @if (hasErrors('issn', 'required')) {
+      <div class="text-danger">ISSN requerido</div>
+      }
+      <label for="tipo_material" class="form-label">Tipo de material</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('tipo_material', 'required') }"
+        type="text"
+        class="form-control"
+        formControlName="tipo_material"
+        placeholder="tipo de material..."
+      />
+      @if (hasErrors('tipo_material', 'required')) {
+      <div class="text-danger">Tipo de material requerido</div>
+      }
+    </div>
+    <div class="col-md-4">
+      <label for="editorial" class="form-label">Editorial</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('editorial', 'required') }"
+        type="text"
+        class="form-control"
+        formControlName="editorial"
+        placeholder="editorial..."
+      />
+      @if (hasErrors('editorial', 'required')) {
+      <div class="text-danger">Editorial requerido</div>
+      }
+      <label for="anio_publicacion" class="form-label"
+        >Año de publicación</label
+      >
+      <select
+        [ngClass]="{ 'is-invalid': hasErrors('anio_publicacion', 'required') }"
+        class="form-control"
+        formControlName="anio_publicacion"
+      >
+        <option value="" disabled selected>Seleccione un año</option>
+        <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+      </select>
+      @if(hasErrors('anio_publicacion', 'required')){
+      <div class="text-danger">Año de publicación requerido</div>
+      }
 
+      <label for="monto" class="form-label">Monto</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('monto', 'required') }"
+        type="number"
+        class="form-control"
+        formControlName="monto"
+        placeholder="monto..."
+      />
+      @if(hasErrors('monto', 'required')){
+      <div class="text-danger">monto requerido</div>
+      }
+    </div>
+    <div class="container text-center">
+      <button type="submit" class="btn btn-secondary">Guardar</button>
+    </div>
+  </form>
+  <div class="container text-center">
+    <button
+      style="margin-right: 30px"
+      type="submit"
+      class="btn btn-secondary"
+      (click)="cancelar()"
+    >
+      Cancelar
+    </button>
+  </div>
+</div>

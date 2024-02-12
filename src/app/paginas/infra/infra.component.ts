@@ -6,58 +6,55 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-infra',
   templateUrl: './infra.component.html',
-  styleUrl: './infra.component.css'
+  styleUrl: './infra.component.css',
 })
-export class InfraComponent implements OnInit{
-  nombre="Equipos de Infraestructura";
-  
+export class InfraComponent implements OnInit {
+  nombre = 'Equipos de Infraestructura';
+
   private _apiService = inject(ApiService);
-  
+
   equipos?: IInfra[];
   item: any;
-  
+
   ngOnInit(): void {
-    this._apiService.getEquipos().subscribe((data:IInfra[]) => {
+    this._apiService.getEquipos().subscribe((data: IInfra[]) => {
       this.equipos = data;
-    })
+    });
   }
 
-  seleccion(item: any){
+  seleccion(item: any) {
     this.item = item;
-
   }
 
-  cerrar($event: boolean){
+  cerrar($event: boolean) {
     this.item.isSelected = $event;
   }
-  
-  eliminar(id: number){
 
+  eliminar(id: number) {
     // alert
-    
+
     Swal.fire({
-      title: "¿Está seguro de eliminar este elemento?",
-      text: "Se eliminará : " + this.item.tipoEquipo.nombreTipoEquipo,
-      icon: "warning",
+      title: '¿Está seguro de eliminar este elemento?',
+      text: 'Se eliminará : ' + this.item.tipoEquipo.nombreTipoEquipo,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sí, eliminar"
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this._apiService.delEliminarEquipoPorId(id).subscribe(response => {
-
+        this._apiService.delEliminarEquipoPorId(id).subscribe((response) => {
           Swal.fire({
-            title: "Elimiado!",
+            title: 'Elimiado!',
             text: response.mensaje,
-            icon: "success"
+            icon: 'success',
           });
           // loading
           setTimeout(() => {
             this.ngOnInit();
           }, 150);
-        })
+        });
       }
     });
-}
+  }
 }

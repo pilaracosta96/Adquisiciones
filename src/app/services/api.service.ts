@@ -8,100 +8,109 @@ import { IInfra } from '../models/infra.model';
 import { IMensaje } from '../models/mensaje.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-  constructor() { }
+  constructor() {}
 
   private _http = inject(HttpClient);
-  private _urlBase: string ="http://localhost:8080/api";
-
+  private _urlBase: string = 'http://localhost:8080/api';
 
   // LISTAR
-  getBibliografias():Observable<IBibliografia[]>{
-    return this._http.get<IBibliografia[]>(`${this._urlBase}/bibliografias/listar`);
+  getBibliografias(): Observable<IBibliografia[]> {
+    return this._http.get<IBibliografia[]>(
+      `${this._urlBase}/bibliografias/listar`
+    );
   }
-  
+
   // getBibliografia(titulo:string):Observable<IBibliografia>{
   //   return this._http.get<IBibliografia>(`${this._urlBase}/bibliografias/titulo/:${titulo}`);
   // }
-  
 
-  getServicios():Observable<IServicio[]>{
-    return this._http.get<IServicio[]>(`${this._urlBase}/servicio/listar`)
+  getServicios(): Observable<IServicio[]> {
+    return this._http.get<IServicio[]>(`${this._urlBase}/servicio/listar`);
   }
-  
-  getLicencias():Observable<ILicencia[]>{
-    return this._http.get<ILicencia[]>(`${this._urlBase}/licenciaSoftware/listar`)
+
+  getLicencias(): Observable<ILicencia[]> {
+    return this._http.get<ILicencia[]>(
+      `${this._urlBase}/licenciaSoftware/listar`
+    );
   }
-  getEquipos():Observable<IInfra[]>{
-    return this._http.get<IInfra[]>(`${this._urlBase}/equipoInfraestructura/listar`)
+  getEquipos(): Observable<IInfra[]> {
+    return this._http.get<IInfra[]>(
+      `${this._urlBase}/equipoInfraestructura/listar`
+    );
   }
 
   // Guardar
 
   postGuardarBibliografia(data?: string): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.post<IMensaje>(this._urlBase+'/bibliografias/guardar', data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
+    return this._http
+      .post<IMensaje>(this._urlBase + '/bibliografias/guardar', data, {
+        headers,
+      })
+      .pipe(catchError(this.handleHttpError));
   }
 
   postGuardarLicencia(data?: string): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.post<IMensaje>(this._urlBase+'/licenciaSoftware/guardar', data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
-      
+    return this._http
+      .post<IMensaje>(this._urlBase + '/licenciaSoftware/guardar', data, {
+        headers,
+      })
+      .pipe(catchError(this.handleHttpError));
   }
   postGuardarServicio(data?: string): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.post<IMensaje>(this._urlBase+'/servicio/guardar', data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
-      
+    return this._http
+      .post<IMensaje>(this._urlBase + '/servicio/guardar', data, { headers })
+      .pipe(catchError(this.handleHttpError));
   }
   postGuardarEquipo(data?: string): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.post<IMensaje>(this._urlBase+'/equipoInfraestructura/guardar', data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
-      
+    return this._http
+      .post<IMensaje>(this._urlBase + '/equipoInfraestructura/guardar', data, {
+        headers,
+      })
+      .pipe(catchError(this.handleHttpError));
   }
 
   // ELIMINAR
   delEliminarPorISBN(data: number): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.delete<IMensaje>(this._urlBase+'/bibliografias/eliminarPorISBN/'+ data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
+    return this._http
+      .delete<IMensaje>(
+        this._urlBase + '/bibliografias/eliminarPorISBN/' + data,
+        { headers }
+      )
+      .pipe(catchError(this.handleHttpError));
   }
   delEliminarLicenciaPorId(data: number): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.delete<IMensaje>(this._urlBase+'/licenciaSoftware/eliminarPorId/'+ data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
+    return this._http
+      .delete<IMensaje>(
+        this._urlBase + '/licenciaSoftware/eliminarPorId/' + data,
+        { headers }
+      )
+      .pipe(catchError(this.handleHttpError));
   }
   delEliminarServicioPorId(data: number): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.delete<IMensaje>(this._urlBase+'/servicio/eliminarPorId/'+ data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
+    return this._http
+      .delete<IMensaje>(this._urlBase + '/servicio/eliminarPorId/' + data, {
+        headers,
+      })
+      .pipe(catchError(this.handleHttpError));
   }
   delEliminarEquipoPorId(data: number): Observable<IMensaje> {
     const headers = { 'Content-Type': 'application/json' };
-    return this._http.delete<IMensaje>(this._urlBase+'/equipoInfraestructura/eliminarPorId/'+ data, {headers})
-    .pipe(
-      catchError(this.handleHttpError)
-    );
+    return this._http
+      .delete<IMensaje>(
+        this._urlBase + '/equipoInfraestructura/eliminarPorId/' + data,
+        { headers }
+      )
+      .pipe(catchError(this.handleHttpError));
   }
 
   private handleHttpError(error: HttpErrorResponse): Observable<never> {
@@ -115,6 +124,5 @@ export class ApiService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-  } 
-
+  }
 }

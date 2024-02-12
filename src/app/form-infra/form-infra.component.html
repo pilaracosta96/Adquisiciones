@@ -1,45 +1,106 @@
-<h3 class="d-flex justify-content-center"> Formulario de carga Equipos de Infraestructura</h3>
-<br>
-<br>
+<h3 class="d-flex justify-content-center">
+  Formulario de carga Equipos de Infraestructura
+</h3>
+<br />
+<br />
 
 <div class="container text-center">
-    <form [formGroup]="formularioInfra" class="row g-3" (ngSubmit)="enviar()">
-        <div class="col-md-4 container text-center" >
-            <label for="tipo_equipo" class="form-label">Tipo de equipo</label>
-            <input [ngClass]="{'is-invalid': hasErrors('tipo_equipo') }" type="text" class="form-control" formControlName="tipo_equipo" placeholder="Tipo de equipo...">
-            @if (hasErrors('tipo_equipo')) {<div class="text-danger">Tipo de equipo requerido</div>}
-            
-            <label for="fecha_incorporacion" class="form-label">Fecha de incorporación</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fecha_incorporacion') }" type="date" class="form-control" formControlName="fecha_incorporacion" placeholder="Fecha...">
-            @if (hasErrors('fecha_incorporacion')) {<div class="text-danger">fecha requerido</div>}
-            
-            
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea  [ngClass]="{'is-invalid': hasErrors('descripcion') }"   row="3" class="form-control" formControlName="descripcion" placeholder="Descripción..."> </textarea> 
-            @if (hasErrors('descripcion')) {<div class="text-danger">descripcion requerido</div>} 
-            
-            
-            <label for="numero_serie" class="form-label">Nº serie</label>
-            <input [ngClass]="{'is-invalid': hasErrors('numero_serie') }" type="text" class="form-control"formControlName="numero_serie" placeholder="Número de serie...">
-            @if (hasErrors('numero_serie')) {<div class="text-danger">numero de serie requerido</div>}
-            
-            <label for="monto" class="form-label">Monto</label>
-            <input [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control" formControlName="monto" placeholder="Monto...">
-            @if (hasErrors('monto')) {<div class="text-danger">monto requerido</div>}
-            
-            <label for="cantidad" class="form-label">Cantidad</label>
-            <input [ngClass]="{'is-invalid': hasErrors('cantidad') }" type="number" class="form-control" formControlName="cantidad" placeholder="Cantidad...">
-            @if (hasErrors('cantidad')) {<div class="text-danger">cantidad requerido</div>}
-            
-            <label for="precio_unitario" class="form-label">Precio Unitario</label>
-            <input [ngClass]="{'is-invalid': hasErrors('precio_unitario') }" type="number" class="form-control" formControlName="precio_unitario" placeholder="Precio Unitario...">
-            @if (hasErrors('precio_unitario')) {<div class="text-danger">precio requerido</div>}
-        </div>
-    <div class="container text-center">
-        <button type="submit" class="btn btn-secondary">Guardar</button>
+  <form [formGroup]="formularioInfra" class="row g-3" (ngSubmit)="enviar()">
+    <div class="col-md-4 container text-center">
+      <label for="tipo_equipo" class="form-label">Tipo de equipo</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('tipo_equipo') }"
+        type="text"
+        class="form-control"
+        formControlName="tipo_equipo"
+        placeholder="Tipo de equipo..."
+      />
+      @if (hasErrors('tipo_equipo')) {
+      <div class="text-danger">Tipo de equipo requerido</div>
+      }
+
+      <label for="fecha_incorporacion" class="form-label"
+        >Fecha de incorporación</label
+      >
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('fecha_incorporacion') }"
+        type="date"
+        class="form-control"
+        formControlName="fecha_incorporacion"
+        placeholder="Fecha..."
+      />
+      @if (hasErrors('fecha_incorporacion')) {
+      <div class="text-danger">fecha requerido</div>
+      }
+
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea
+        [ngClass]="{ 'is-invalid': hasErrors('descripcion') }"
+        row="3"
+        class="form-control"
+        formControlName="descripcion"
+        placeholder="Descripción..."
+      >
+      </textarea>
+      @if (hasErrors('descripcion')) {
+      <div class="text-danger">descripcion requerido</div>
+      }
+
+      <label for="numero_serie" class="form-label">Nº serie</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('numero_serie') }"
+        type="text"
+        class="form-control"
+        formControlName="numero_serie"
+        placeholder="Número de serie..."
+      />
+      @if (hasErrors('numero_serie')) {
+      <div class="text-danger">numero de serie requerido</div>
+      }
+
+      <label for="monto" class="form-label">Monto</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('monto') }"
+        type="number"
+        class="form-control"
+        formControlName="monto"
+        placeholder="Monto..."
+      />
+      @if (hasErrors('monto')) {
+      <div class="text-danger">monto requerido</div>
+      }
+
+      <label for="cantidad" class="form-label">Cantidad</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('cantidad') }"
+        type="number"
+        class="form-control"
+        formControlName="cantidad"
+        placeholder="Cantidad..."
+      />
+      @if (hasErrors('cantidad')) {
+      <div class="text-danger">cantidad requerido</div>
+      }
+
+      <label for="precio_unitario" class="form-label">Precio Unitario</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('precio_unitario') }"
+        type="number"
+        class="form-control"
+        formControlName="precio_unitario"
+        placeholder="Precio Unitario..."
+      />
+      @if (hasErrors('precio_unitario')) {
+      <div class="text-danger">precio requerido</div>
+      }
     </div>
-</form>
-<div class="container text-center">
-    <button  type="submit" class="btn btn-secondary"  (click)="cancelar()">Cancelar</button>
-</div>
+    <div class="container text-center">
+      <button type="submit" class="btn btn-secondary">Guardar</button>
+    </div>
+  </form>
+  <div class="container text-center">
+    <button type="submit" class="btn btn-secondary" (click)="cancelar()">
+      Cancelar
+    </button>
+  </div>
 </div>

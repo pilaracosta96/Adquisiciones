@@ -1,143 +1,175 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=#a (click)="seleccionar()">
+<button
+  type="button"
+  class="btn btn-secondary"
+  data-bs-toggle="modal"
+  data-bs-target="#a"
+  (click)="seleccionar()"
+>
   Ver más
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="a" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="a"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{titulo}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ titulo }}</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-       <div [ngSwitch]="titulo">
-        <span *ngSwitchCase="'Bibliografía'">
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Título:</li>
-            <li class="list-group-item">{{biblio?.titulo}}</li>
+        <div [ngSwitch]="titulo">
+          <span *ngSwitchCase="'Bibliografía'">
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Título:</li>
+              <li class="list-group-item">{{ biblio?.titulo }}</li>
             </ul>
-            <ul  class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Nombre del Autor:</li>
-            <li class="list-group-item">{{biblio?.nombreAutor}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Nombre del Autor:</li>
+              <li class="list-group-item">{{ biblio?.nombreAutor }}</li>
             </ul>
-            <ul  class="list-group list-group-horizontal-sm" >
-
+            <ul class="list-group list-group-horizontal-sm">
               <li class="list-group-item">Apellido:</li>
-              <li class="list-group-item">{{biblio?.apellidoAutor}}</li>
+              <li class="list-group-item">{{ biblio?.apellidoAutor }}</li>
             </ul>
-            <ul  class="list-group list-group-horizontal-sm">
-
+            <ul class="list-group list-group-horizontal-sm">
               <li class="list-group-item">ISBN:</li>
-              <li class="list-group-item">{{biblio?.isbn}}</li>
+              <li class="list-group-item">{{ biblio?.isbn }}</li>
             </ul>
-            <ul  class="list-group list-group-horizontal-sm">
-
+            <ul class="list-group list-group-horizontal-sm">
               <li class="list-group-item">ISSN:</li>
-              <li class="list-group-item">{{biblio?.issn}}</li>
+              <li class="list-group-item">{{ biblio?.issn }}</li>
             </ul>
-            <ul  class="list-group list-group-horizontal-sm">
-
+            <ul class="list-group list-group-horizontal-sm">
               <li class="list-group-item">Tipo de Material:</li>
-              <li class="list-group-item">{{biblio?.tipoMaterial?.nombreTipoMaterial}}</li>
-            </ul> <ul  class="list-group list-group-horizontal-sm">
-
+              <li class="list-group-item">
+                {{ biblio?.tipoMaterial?.nombreTipoMaterial }}
+              </li>
+            </ul>
+            <ul class="list-group list-group-horizontal-sm">
               <li class="list-group-item">Monto:</li>
-              <li class="list-group-item">{{biblio?.monto | currency}} </li>
+              <li class="list-group-item">{{ biblio?.monto | currency }}</li>
             </ul>
-            <ul  class="list-group list-group-horizontal-sm">
-
+            <ul class="list-group list-group-horizontal-sm">
               <li class="list-group-item">Editorial:</li>
-              <li class="list-group-item">{{biblio?.editorial?.nombreEditorial}}</li>
-            </ul><ul  class="list-group list-group-horizontal-sm" >
-            <li class="list-group-item">Año de publicación:</li>
-            <li class="list-group-item">{{biblio?.anioPublicacion}}</li>
-          </ul>
-        </span>
-        <span *ngSwitchCase="'Licencias de Software'">
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Nombre:</li>
-            <li class="list-group-item">{{licencia?.nombre}}</li>
+              <li class="list-group-item">
+                {{ biblio?.editorial?.nombreEditorial }}
+              </li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Versión:</li>
-            <li class="list-group-item">{{licencia?.version}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Año de publicación:</li>
+              <li class="list-group-item">{{ biblio?.anioPublicacion }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">N° de Release:</li>
-            <li class="list-group-item">{{licencia?.numeroRelease}}</li>
+          </span>
+          <span *ngSwitchCase="'Licencias de Software'">
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Nombre:</li>
+              <li class="list-group-item">{{ licencia?.nombre }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Fecha de otorgamiento:</li>
-            <li class="list-group-item">{{licencia?.fechaOtorgamiento}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Versión:</li>
+              <li class="list-group-item">{{ licencia?.version }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Fecha de vencimiento:</li>
-            <li class="list-group-item">{{licencia?.fechaVencimiento}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">N° de Release:</li>
+              <li class="list-group-item">{{ licencia?.numeroRelease }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Monto:</li>
-            <li class="list-group-item">{{licencia?.monto | currency}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Fecha de otorgamiento:</li>
+              <li class="list-group-item">{{ licencia?.fechaOtorgamiento }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Fabricante:</li>
-            <li class="list-group-item">{{licencia?.fabricante?.nombreFabricante}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Fecha de vencimiento:</li>
+              <li class="list-group-item">{{ licencia?.fechaVencimiento }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Año:</li>
-            <li class="list-group-item">{{licencia?.anio}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Monto:</li>
+              <li class="list-group-item">{{ licencia?.monto | currency }}</li>
             </ul>
-        </span>
-        <span *ngSwitchCase="'Equipos de Infraestructura'">
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Descripción:</li>
-            <li  class="list-group-item">{{infra?.descripcion}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Fabricante:</li>
+              <li class="list-group-item">
+                {{ licencia?.fabricante?.nombreFabricante }}
+              </li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Fecha de incorporación:</li>
-            <li class="list-group-item">{{infra?.fechaIncorporacion}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Año:</li>
+              <li class="list-group-item">{{ licencia?.anio }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Tipo de equipo:</li>
-            <li class="list-group-item">{{infra?.tipoEquipo?.nombreTipoEquipo}}</li>
+          </span>
+          <span *ngSwitchCase="'Equipos de Infraestructura'">
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Descripción:</li>
+              <li class="list-group-item">{{ infra?.descripcion }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Cantidad de ese equipo:</li>
-            <li class="list-group-item">{{infra?.tipoEquipo?.cantidad}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Fecha de incorporación:</li>
+              <li class="list-group-item">{{ infra?.fechaIncorporacion }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Precio unitario:</li>
-            <li class="list-group-item">{{infra?.tipoEquipo?.precioUnitario | currency}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Tipo de equipo:</li>
+              <li class="list-group-item">
+                {{ infra?.tipoEquipo?.nombreTipoEquipo }}
+              </li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Nº serie:</li>
-            <li class="list-group-item">{{infra?.numeroSerie}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Cantidad de ese equipo:</li>
+              <li class="list-group-item">{{ infra?.tipoEquipo?.cantidad }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Monto:</li>
-            <li class="list-group-item">{{infra?.monto | currency}} </li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Precio unitario:</li>
+              <li class="list-group-item">
+                {{ infra?.tipoEquipo?.precioUnitario | currency }}
+              </li>
             </ul>
-        </span>
-        <span *ngSwitchCase="'Servicios'">
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Tipo de Servicio:</li>
-            <li class="list-group-item">{{servicio?.tipoServicio?.nombreTipoServicio}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Nº serie:</li>
+              <li class="list-group-item">{{ infra?.numeroSerie }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Fecha:</li>
-            <li class="list-group-item">{{servicio?.fecha}}</li>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Monto:</li>
+              <li class="list-group-item">{{ infra?.monto | currency }}</li>
             </ul>
-          <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">Monto:</li>
-            <li class="list-group-item">{{servicio?.monto | currency}} </li>
+          </span>
+          <span *ngSwitchCase="'Servicios'">
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Tipo de Servicio:</li>
+              <li class="list-group-item">
+                {{ servicio?.tipoServicio?.nombreTipoServicio }}
+              </li>
             </ul>
-        </span>
-        <span *ngSwitchDefault>Valor no válido</span>
-       </div>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Fecha:</li>
+              <li class="list-group-item">{{ servicio?.fecha }}</li>
+            </ul>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item">Monto:</li>
+              <li class="list-group-item">{{ servicio?.monto | currency }}</li>
+            </ul>
+          </span>
+          <span *ngSwitchDefault>Valor no válido</span>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarCheck()">Aceptar</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="limpiarCheck()"
+        >
+          Aceptar
+        </button>
       </div>
     </div>
   </div>
