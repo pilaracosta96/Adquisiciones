@@ -14,7 +14,7 @@
         @if (hasErrors('monto')) {<div class="text-danger">monto requerido</div>}
         
         <label for="fecha" class="form-label">Fecha </label>
-        <input [ngClass]="{'is-invalid': hasErrors('fecha') }" type="date" class="form-control" formControlName="fecha" placeholder="Fecha...">
+        <input [ngClass]="{'is-invalid': hasErrors('fecha') }" type="number" class="form-control" formControlName="fecha" placeholder="Fecha...">
         @if (hasErrors('fecha')) {<div class="text-danger">Fecha requerido</div>}
     </div>
 

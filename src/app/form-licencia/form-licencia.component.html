@@ -22,11 +22,11 @@
         </div>
         <div class="col-md-4 container text-center">
             <label for="fecha_otorgamiento" class="form-label">Ingresar Fecha de otorgamiento</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fecha_otorgamiento') }" type="date" class="form-control" formControlName="fecha_otorgamiento" placeholder="Fecha de otorgamiento...">
+            <input [ngClass]="{'is-invalid': hasErrors('fecha_otorgamiento') }" type="number" class="form-control" formControlName="fecha_otorgamiento" placeholder="Fecha de otorgamiento...">
             @if (hasErrors('fecha_otorgamiento')) {<div class="text-danger">Fecha de otorgamiento requerido</div>}
             
             <label for="fecha_vencimiento" class="form-label">Ingresar Fecha de vencimiento</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fecha_vencimiento') }" type="date" class="form-control" formControlName="fecha_vencimiento" placeholder="Fecha de vencimiento...">
+            <input [ngClass]="{'is-invalid': hasErrors('fecha_vencimiento') }" type="number" class="form-control" formControlName="fecha_vencimiento" placeholder="Fecha de vencimiento...">
             @if (hasErrors('fecha_vencimiento')) {<div class="text-danger">Fecha de vencimiento requerido</div>}
             
             <label for="anio" class="form-label">Ingresar el año</label>

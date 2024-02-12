@@ -29,13 +29,15 @@ export class FormLicenciaComponent {
  
   enviar(){
    
-    this._apiService.postGuardarLicencia(JSON.stringify(this.formularioLicencia.value)).subscribe(response => {
-      alert('Respuesta del backend:'+ JSON.stringify(response) );
-  },
-  error => {
-      console.error('Error al enviar datos:', error);
-  }
-  );
+  //   this._apiService.postGuardarLicencia(JSON.stringify(this.formularioLicencia.value)).subscribe(response => {
+  //     alert('Respuesta del backend:'+ JSON.stringify(response) );
+  // },
+  // error => {
+  //     console.error('Error al enviar datos:', error);
+  // }
+  // );
+
+  console.log(this.formularioLicencia.value);
   this.limpiar();
   }
 
