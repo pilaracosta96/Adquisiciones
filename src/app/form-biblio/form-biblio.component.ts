@@ -23,8 +23,8 @@ export class FormBiblioComponent {
       titulo: ['', Validators.required],
       nombre_autor: ['', Validators.required],
       apellido_autor: ['', Validators.required],
+      isbn: ['', [Validators.required, Validators.minLength(1),Validators.maxLength(13)]],
       issn: ['', Validators.required],
-      isbn: ['', Validators.required],
       editorial: ['', Validators.required],
       anio_publicacion: ['', Validators.required],
       tipo_material: ['', Validators.required],
@@ -42,17 +42,23 @@ export class FormBiblioComponent {
         text: response.mensaje,
         icon: "success"
       });
+      this.limpiar();
   },
   error => {
-      console.error('Error al enviar datos:', error);
+   
+    Swal.fire({
+      icon: "error",
+      title: "Error al enviar datos"+ error.mensaje,
+      text: "Algo salió mal",
+      footer: '<a >Verifique los campos por favor</a>'
+    });
   }
   );
-  this.limpiar();
     
   }
 
-  hasErrors(controlName:string) {
-    return this.formularioBiblio.get(controlName)?.hasError('required') && this.formularioBiblio.get(controlName)?.touched;
+  hasErrors(controlName:string , tipoError: string) {
+    return this.formularioBiblio.get(controlName)?.hasError(tipoError) && this.formularioBiblio.get(controlName)?.touched;
   }
 
   limpiar(){
@@ -69,7 +75,7 @@ export class FormBiblioComponent {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.enviar();
+        
       } else if (result.isDenied) {
         this.ruta.navigate(['/bibliografias'])
       }

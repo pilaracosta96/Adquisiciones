@@ -34,12 +34,17 @@ export class FormServicioComponent {
         text: response.mensaje,
         icon: "success"
       });
+      this.limpiar();
   },
   error => {
-      console.error('Error al enviar datos:', error);
+    Swal.fire({
+      icon: "error",
+      title: "Error al enviar datos"+ error.mensaje,
+      text: "Algo salió mal",
+      footer: '<a >Verifique los campos por favor</a>'
+    });
   }
   );
-  this.limpiar();
   }
 
   hasErrors(controlName:string) {
