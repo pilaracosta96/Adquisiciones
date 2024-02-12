@@ -16,14 +16,14 @@ export class FormBiblioComponent {
   formularioBiblio: FormGroup;
   private ruta = inject(Router);
   private _apiService = inject(ApiService);
-
+  anios: any[] = [];
 
   constructor( private form: FormBuilder){
     this.formularioBiblio = this.form.group({
       titulo: ['', Validators.required],
       nombre_autor: ['', Validators.required],
       apellido_autor: ['', Validators.required],
-      isbn: ['', [Validators.required, Validators.minLength(1),Validators.maxLength(13)]],
+      isbn: ['', [Validators.required,Validators.maxLength(13)]],
       issn: ['', Validators.required],
       editorial: ['', Validators.required],
       anio_publicacion: ['', Validators.required],
@@ -31,8 +31,18 @@ export class FormBiblioComponent {
       monto: ['', Validators.required],
 
     });
+    this.generarAnios();
   }
  
+
+  generarAnios() {
+    const anioActual = new Date().getFullYear();
+    for (let i = anioActual; i >= 1900; i--) {
+      this.anios.push(i);
+    }
+  }
+
+
   enviar(){
    
     this._apiService.postGuardarBibliografia(JSON.stringify(this.formularioBiblio.value)).subscribe(response => {

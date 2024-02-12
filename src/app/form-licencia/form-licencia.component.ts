@@ -13,6 +13,7 @@ export class FormLicenciaComponent {
   formularioLicencia: FormGroup;
   private ruta = inject (Router);
   private _apiService = inject(ApiService);
+  anios: any[] = [];
 
 
   constructor( private form: FormBuilder){
@@ -27,6 +28,14 @@ export class FormLicenciaComponent {
       version: ['', Validators.required]
 
     });
+    this.generarAnios();
+  }
+
+  generarAnios() {
+    const anioActual = new Date().getFullYear();
+    for (let i = anioActual; i >= 1900; i--) {
+      this.anios.push(i);
+    }
   }
  
   enviar(){
@@ -52,8 +61,8 @@ export class FormLicenciaComponent {
   console.log(this.formularioLicencia.value);
   }
 
-  hasErrors(controlName:string) {
-    return this.formularioLicencia.get(controlName)?.hasError('required') && this.formularioLicencia.get(controlName)?.touched;
+  hasErrors(controlName:string , typeError: string) {
+    return this.formularioLicencia.get(controlName)?.hasError(typeError) && this.formularioLicencia.get(controlName)?.touched;
   }
 
   limpiar(){

@@ -4,38 +4,42 @@
     <form [formGroup]="formularioLicencia" class="row g-3" (ngSubmit)="enviar()">
         <div class="col-md-4 container text-center">
             <label for="nombre" class="form-label">Ingresar Nombre</label>
-            <input [ngClass]="{'is-invalid': hasErrors('nombre') }" type="text" class="form-control" formControlName="nombre" placeholder="Nombre...">
-            @if (hasErrors('nombre')) {<div class="text-danger">Nombre requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('nombre', 'required') }" type="text" class="form-control" formControlName="nombre" placeholder="Nombre...">
+            @if (hasErrors('nombre', 'required')) {<div class="text-danger">Nombre requerido</div>}
             
             <label for="fabricante" class="form-label">Ingresar Fabricante</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fabricante') }" type="text" class="form-control" formControlName="fabricante" placeholder="Fabricante...">
-            @if (hasErrors('fabricante')) {<div class="text-danger">Fabricante requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('fabricante', 'required') }" type="text" class="form-control" formControlName="fabricante" placeholder="Fabricante...">
+            @if (hasErrors('fabricante', 'required')) {<div class="text-danger">Fabricante requerido</div>}
             
             <label for="numero_release" class="form-label">Ingresar número Release</label>
-            <input [ngClass]="{'is-invalid': hasErrors('numero_release') }" type="text" class="form-control" formControlName="numero_release" placeholder="Número Release...">
-            @if (hasErrors('numero_release')) {<div class="text-danger">Número Release requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('numero_release', 'required') }" type="text" class="form-control" formControlName="numero_release" placeholder="Número Release...">
+            @if (hasErrors('numero_release', 'required')) {<div class="text-danger">Número Release requerido</div>}
             
             <label for="monto" class="form-label">Ingresar monto</label>
-            <input [ngClass]="{'is-invalid': hasErrors('monto') }" type="number" class="form-control" formControlName="monto" placeholder="monto...">
-            @if (hasErrors('monto')) {<div class="text-danger">Monto requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('monto', 'required') }" type="number" class="form-control" formControlName="monto" placeholder="monto...">
+            @if (hasErrors('monto', 'required')) {<div class="text-danger">Monto requerido</div>}
             
         </div>
         <div class="col-md-4 container text-center">
             <label for="fecha_otorgamiento" class="form-label">Ingresar Fecha de otorgamiento</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fecha_otorgamiento') }" type="date" class="form-control" formControlName="fecha_otorgamiento" placeholder="Fecha de otorgamiento...">
-            @if (hasErrors('fecha_otorgamiento')) {<div class="text-danger">Fecha de otorgamiento requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('fecha_otorgamiento', 'required') }" type="date" class="form-control" formControlName="fecha_otorgamiento" placeholder="Fecha de otorgamiento...">
+            @if (hasErrors('fecha_otorgamiento', 'required')) {<div class="text-danger">Fecha de otorgamiento requerido</div>}
             
             <label for="fecha_vencimiento" class="form-label">Ingresar Fecha de vencimiento</label>
-            <input [ngClass]="{'is-invalid': hasErrors('fecha_vencimiento') }" type="date" class="form-control" formControlName="fecha_vencimiento" placeholder="Fecha de vencimiento...">
-            @if (hasErrors('fecha_vencimiento')) {<div class="text-danger">Fecha de vencimiento requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('fecha_vencimiento', 'required') }" type="date" class="form-control" formControlName="fecha_vencimiento" placeholder="Fecha de vencimiento...">
+            @if (hasErrors('fecha_vencimiento', 'required')) {<div class="text-danger">Fecha de vencimiento requerido</div>}
             
-            <label for="anio" class="form-label">Ingresar el año</label>
-            <input [ngClass]="{'is-invalid': hasErrors('anio') }" type="date" class="form-control" formControlName="anio" placeholder="Año...">
-            @if (hasErrors('anio')) {<div class="text-danger">Año requerido</div>}
+            <label for="anio" class="form-label">Año de publicación</label>
+            <select [ngClass]="{'is-invalid': hasErrors('anio', 'required') }"
+                class="form-control" formControlName="anio" >
+                <option value="" disabled selected>Seleccione un año</option>
+                <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+            </select>
+            @if (hasErrors('anio', 'required')) {<div class="text-danger">Año  requerido</div>}
            
             <label for="version" class="form-label">Ingresar la versión</label>
-            <input [ngClass]="{'is-invalid': hasErrors('version') }" type="text" class="form-control" formControlName="version" placeholder="version...">
-            @if (hasErrors('version')) {<div class="text-danger">N° de versión requerido</div>}
+            <input [ngClass]="{'is-invalid': hasErrors('version', 'required') }" type="text" class="form-control" formControlName="version" placeholder="version...">
+            @if (hasErrors('version', 'required')) {<div class="text-danger">N° de versión requerido</div>}
             
         </div>
         <div class="container text-center">
