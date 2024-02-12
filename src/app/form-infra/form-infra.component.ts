@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-infra',
@@ -15,6 +16,7 @@ export class FormInfraComponent {
   formularioInfra: FormGroup;
 
   private _apiService = inject(ApiService);
+  private ruta = inject (Router);
 
   constructor( private form: FormBuilder){
     this.formularioInfra = this.form.group({
@@ -53,6 +55,23 @@ export class FormInfraComponent {
 
   limpiar(){
     this.formularioInfra.reset();
+  }
+
+  cancelar(){
+    Swal.fire({
+      title: "Desea abandonar la página?, se perderán los cambios",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: `No guardar`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.enviar();
+      } else if (result.isDenied) {
+        this.ruta.navigate(['/infra'])
+      }
+    });
   }
 
 }

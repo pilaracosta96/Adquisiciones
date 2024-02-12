@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import Swal from 'sweetalert2';
-import { IMensaje } from '../models/mensaje.model';
+import {  Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-form-biblio',
@@ -13,7 +14,7 @@ export class FormBiblioComponent {
   
   
   formularioBiblio: FormGroup;
-  
+  private ruta = inject(Router);
   private _apiService = inject(ApiService);
 
 
@@ -56,5 +57,22 @@ export class FormBiblioComponent {
 
   limpiar(){
     this.formularioBiblio.reset();
+  }
+
+  cancelar(){
+    Swal.fire({
+      title: "Desea abandonar la página?, se perderán los cambios",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: `No guardar`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.enviar();
+      } else if (result.isDenied) {
+        this.ruta.navigate(['/bibliografias'])
+      }
+    });
   }
 }
