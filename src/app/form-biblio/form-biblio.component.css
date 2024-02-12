@@ -4,3 +4,6 @@ input{
 button{
     margin: 8px;
 }
+.container{
+    width: 1000px;
+}
