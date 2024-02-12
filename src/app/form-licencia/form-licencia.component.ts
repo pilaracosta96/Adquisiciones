@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-licencia',
@@ -29,13 +30,17 @@ export class FormLicenciaComponent {
  
   enviar(){
    
-  //   this._apiService.postGuardarLicencia(JSON.stringify(this.formularioLicencia.value)).subscribe(response => {
-  //     alert('Respuesta del backend:'+ JSON.stringify(response) );
-  // },
-  // error => {
-  //     console.error('Error al enviar datos:', error);
-  // }
-  // );
+    this._apiService.postGuardarLicencia(JSON.stringify(this.formularioLicencia.value)).subscribe(response => {
+      Swal.fire({
+        title: "Guardado!",
+        text: response.mensaje,
+        icon: "success"
+      });
+  },
+  error => {
+      console.error('Error al enviar datos:', error);
+  }
+  );
 
   console.log(this.formularioLicencia.value);
   this.limpiar();

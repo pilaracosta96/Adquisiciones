@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import Swal from 'sweetalert2';
+import { IMensaje } from '../models/mensaje.model';
 
 @Component({
   selector: 'app-form-biblio',
@@ -33,7 +35,12 @@ export class FormBiblioComponent {
   enviar(){
    
     this._apiService.postGuardarBibliografia(JSON.stringify(this.formularioBiblio.value)).subscribe(response => {
-      alert('Respuesta del backend:'+ JSON.stringify(response) );
+      
+      Swal.fire({
+        title: "Guardado!",
+        text: response.mensaje,
+        icon: "success"
+      });
   },
   error => {
       console.error('Error al enviar datos:', error);

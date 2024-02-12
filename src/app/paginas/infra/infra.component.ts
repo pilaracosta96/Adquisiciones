@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { IInfra } from '../../models/infra.model';
 import { ApiService } from '../../services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-infra',
@@ -31,10 +32,32 @@ export class InfraComponent implements OnInit{
   }
   
   eliminar(id: number){
+
+    // alert
     
-    this._apiService.delEliminarEquipoPorId(id).subscribe(response => {alert(JSON.stringify(response))});
-    setTimeout(() => {
-      this.ngOnInit();
-    }, 150);
-  }
+    Swal.fire({
+      title: "¿Está seguro de eliminar este elemento?",
+      text: "Se eliminará : " + this.item.tipoEquipo.nombreTipoEquipo,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._apiService.delEliminarEquipoPorId(id).subscribe(response => {
+
+          Swal.fire({
+            title: "Elimiado!",
+            text: response.mensaje,
+            icon: "success"
+          });
+          // loading
+          setTimeout(() => {
+            this.ngOnInit();
+          }, 150);
+        })
+      }
+    });
+}
 }

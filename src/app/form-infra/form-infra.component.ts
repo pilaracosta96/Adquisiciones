@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-infra',
@@ -33,7 +34,11 @@ export class FormInfraComponent {
   enviar(){
    
     this._apiService.postGuardarEquipo(JSON.stringify(this.formularioInfra.value)).subscribe(response => {
-      alert('Respuesta del backend:'+ JSON.stringify(response) );
+      Swal.fire({
+        title: "Guardado!",
+        text: response.mensaje,
+        icon: "success"
+      });
   },
   error => {
       console.error('Error al enviar datos:', error);

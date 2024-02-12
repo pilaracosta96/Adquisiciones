@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ILicencia } from '../../models/licencia.model';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-licencias',
@@ -31,15 +32,33 @@ export class LicenciasComponent implements OnInit{
   }
 
   eliminar(id: number){
+
+    // alert
     
-    this._apiService.delEliminarLicenciaPorId(id).subscribe(response => {alert(JSON.stringify(response))});
-    setTimeout(() => {
-      this.ngOnInit();
-    }, 150);
+    Swal.fire({
+      title: "¿Está seguro de eliminar este elemento?",
+      text: "Se eliminará : " + this.item.nombre,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._apiService.delEliminarLicenciaPorId(id).subscribe(response => {
+
+          Swal.fire({
+            title: "Elimiado!",
+            text: response.mensaje,
+            icon: "success"
+          });
+          // loading
+          setTimeout(() => {
+            this.ngOnInit();
+          }, 150);
+        })
+      }
+    });
+
   }
-
-  
-  
-  
-
 }

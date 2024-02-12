@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-servicio',
@@ -27,7 +28,11 @@ export class FormServicioComponent {
   enviar(){
    
     this._apiService.postGuardarServicio(JSON.stringify(this.formularioServicio.value)).subscribe(response => {
-      alert('Respuesta del backend:'+ JSON.stringify(response) );
+      Swal.fire({
+        title: "Guardado!",
+        text: response.mensaje,
+        icon: "success"
+      });
   },
   error => {
       console.error('Error al enviar datos:', error);
