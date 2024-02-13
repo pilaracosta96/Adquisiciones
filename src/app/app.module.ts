@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormInfraComponent,
     FormServicioComponent,
     InicioComponent,
-    ModalComponent    
+    ModalComponent
   ],
   imports: [
     BrowserModule,

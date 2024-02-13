@@ -37,28 +37,39 @@ export class FormLicenciaComponent {
   }
 
   enviar() {
-    this._apiService
-      .postGuardarLicencia(JSON.stringify(this.formularioLicencia.value))
-      .subscribe(
-        (response) => {
-          Swal.fire({
-            title: 'Guardado!',
-            text: response.mensaje,
-            icon: 'success',
-          });
-          this.limpiar();
-        },
-        (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error al enviar datos' + error.mensaje,
-            text: 'Algo salió mal',
-            footer: '<a >Verifique los campos por favor</a>',
-          });
-        }
-      );
-
-    console.log(this.formularioLicencia.value);
+    Swal.fire({
+      title: 'Seguro que desea guardar?',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Guardar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._apiService
+          .postGuardarLicencia(JSON.stringify(this.formularioLicencia.value))
+          .subscribe(
+            (response) => {
+              Swal.fire({
+                title: 'Guardado!',
+                text: response.mensaje,
+                icon: 'success',
+              });
+              this.limpiar();
+            },
+            (error) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error al enviar datos' + error.mensaje,
+                text: 'Algo salió mal',
+                footer: '<a >Verifique los campos por favor</a>',
+              });
+            }
+          );
+      }
+    });
+    // ----------
   }
 
   hasErrors(controlName: string, typeError: string) {

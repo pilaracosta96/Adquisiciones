@@ -2,3 +2,18 @@ li{
     height: 42px;
     width: 250px;
 }   
+.scrollable-list-group {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .list-group-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .scrollable-list-group .list-group-item:last-child {
+    overflow: auto;
+  }
