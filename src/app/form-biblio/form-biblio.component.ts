@@ -20,7 +20,7 @@ export class FormBiblioComponent {
       titulo: ['', Validators.required],
       nombre_autor: ['', Validators.required],
       apellido_autor: ['', Validators.required],
-      isbn: ['', [Validators.required, Validators.maxLength(13)]],
+      isbn: ['', [Validators.maxLength(13), Validators.minLength(13), Validators.required]],
       issn: ['', Validators.required],
       editorial: ['', Validators.required],
       anio_publicacion: ['', Validators.required],

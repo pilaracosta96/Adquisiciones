@@ -44,18 +44,21 @@
       <input
         [ngClass]="{
           'is-invalid':
-            hasErrors('isbn', 'required') &&
-            hasErrors('isbn', 'maxLength') 
+            hasErrors('isbn', 'minlength') ||
+            hasErrors('isbn', 'maxlength') ||
+            hasErrors('isbn', 'required')
         }"
-        type="number"
+        type="text"
         class="form-control"
         formControlName="isbn"
         placeholder="Nº de ISBN..."
       />
-      @if (hasErrors('isbn', 'maxLength')) {
-      <div class="text-danger">ISBN requiere 13 dígitos</div>
-      } @if(hasErrors('isbn', 'required')){
+      @if (hasErrors('isbn', 'required')) {
       <div class="text-danger">ISBN requerido</div>
+      } @if (hasErrors('isbn', 'maxlength')) {
+      <div class="text-danger">ISBN requiere 13 dígitos exactamente</div>
+      } @if (hasErrors('isbn', 'minlength')) {
+      <div class="text-danger">ISBN requiere 13 dígitos exactamente</div>
       }
       <label for="issn" class="form-label">ISSN</label>
       <input
@@ -95,7 +98,8 @@
       <label for="anio_publicacion" class="form-label"
         >Año de publicación</label
       >
-      <select aria-label="Default select example"
+      <select
+        aria-label="Default select example"
         [ngClass]="{ 'is-invalid': hasErrors('anio_publicacion', 'required') }"
         class="form-control form-select"
         formControlName="anio_publicacion"
