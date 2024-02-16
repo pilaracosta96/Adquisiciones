@@ -21,6 +21,7 @@ export class FormLicenciaComponent {
       fecha_otorgamiento: ['', Validators.required],
       fecha_vencimiento: ['', Validators.required],
       monto: ['', Validators.required],
+      numero_serie: ['', Validators.required],
       nombre: ['', Validators.required],
       numero_release: ['', Validators.required],
       fabricante: ['', Validators.required],
@@ -61,7 +62,7 @@ export class FormLicenciaComponent {
             (error) => {
               Swal.fire({
                 icon: 'error',
-                title: 'Error al enviar datos' + error.mensaje,
+                title: 'Error al enviar datos   ' + error.mensaje,
                 text: 'Algo salió mal',
                 footer: '<a >Verifique los campos por favor</a>',
               });

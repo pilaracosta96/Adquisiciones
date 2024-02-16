@@ -14,6 +14,17 @@
       @if (hasErrors('nombre', 'required')) {
       <div class="text-danger">Nombre requerido</div>
       }
+      <label for="numero_serie" class="form-label">Ingresar N° Serie</label>
+      <input
+        [ngClass]="{ 'is-invalid': hasErrors('numero_serie', 'required') }"
+        type="text"
+        class="form-control"
+        formControlName="numero_serie"
+        placeholder="numero de serie..."
+      />
+      @if (hasErrors('numero_serie', 'required')) {
+      <div class="text-danger">N° de Serie requerido</div>
+      }
 
       <label for="fabricante" class="form-label">Ingresar Fabricante</label>
       <input
