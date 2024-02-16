@@ -7,90 +7,90 @@
 <div class="container text-center">
   <form [formGroup]="formularioInfra" class="row g-3" (ngSubmit)="enviar()">
     <div class="col-md-4 container text-center">
-      <label for="tipo_equipo" class="form-label">Tipo de equipo</label>
+      <label for="tipo_equipo" class="form-label">Tipo de equipo*</label>
       <input
-        [ngClass]="{ 'is-invalid': hasErrors('tipo_equipo') }"
+        [ngClass]="{ 'is-invalid': hasErrors('tipo_equipo', 'required') }"
         type="text"
         class="form-control"
         formControlName="tipo_equipo"
         placeholder="Tipo de equipo..."
       />
-      @if (hasErrors('tipo_equipo')) {
+      @if (hasErrors('tipo_equipo', 'required')) {
       <div class="text-danger">Tipo de equipo requerido</div>
       }
 
       <label for="fecha_incorporacion" class="form-label"
-        >Fecha de incorporación</label
+        >Fecha de incorporación*</label
       >
       <input
-        [ngClass]="{ 'is-invalid': hasErrors('fecha_incorporacion') }"
+        [ngClass]="{ 'is-invalid': hasErrors('fecha_incorporacion', 'required') }"
         type="date"
         class="form-control"
         formControlName="fecha_incorporacion"
         placeholder="Fecha..."
       />
-      @if (hasErrors('fecha_incorporacion')) {
+      @if (hasErrors('fecha_incorporacion', 'required')) {
       <div class="text-danger">fecha requerido</div>
       }
 
-      <label for="descripcion" class="form-label">Descripción</label>
+      <label for="descripcion" class="form-label">Descripción*</label>
       <textarea
-        [ngClass]="{ 'is-invalid': hasErrors('descripcion') }"
+        [ngClass]="{ 'is-invalid': hasErrors('descripcion', 'required') }"
         row="3"
         class="form-control"
         formControlName="descripcion"
         placeholder="Descripción..."
       >
       </textarea>
-      @if (hasErrors('descripcion')) {
+      @if (hasErrors('descripcion', 'required')) {
       <div class="text-danger">descripcion requerido</div>
       }
 
-      <label for="numero_serie" class="form-label">Nº serie</label>
+      <label for="numero_serie" class="form-label">Nº serie*</label>
       <input
-        [ngClass]="{ 'is-invalid': hasErrors('numero_serie') }"
+        [ngClass]="{ 'is-invalid': hasErrors('numero_serie', 'required') }"
         type="text"
         class="form-control"
         formControlName="numero_serie"
         placeholder="Número de serie..."
       />
-      @if (hasErrors('numero_serie')) {
+      @if (hasErrors('numero_serie', 'required')) {
       <div class="text-danger">numero de serie requerido</div>
       }
 
-      <label for="monto" class="form-label">Monto</label>
+      <label for="monto" class="form-label">Monto*</label>
       <input
-        [ngClass]="{ 'is-invalid': hasErrors('monto') }"
+        [ngClass]="{ 'is-invalid': hasErrors('monto', 'required') }"
         type="number"
         class="form-control"
         formControlName="monto"
         placeholder="Monto..."
       />
-      @if (hasErrors('monto')) {
+      @if (hasErrors('monto', 'required')) {
       <div class="text-danger">monto requerido</div>
       }
 
-      <label for="cantidad" class="form-label">Cantidad</label>
+      <label for="cantidad" class="form-label">Cantidad*</label>
       <input
-        [ngClass]="{ 'is-invalid': hasErrors('cantidad') }"
+        [ngClass]="{ 'is-invalid': hasErrors('cantidad', 'required') }"
         type="number"
         class="form-control"
         formControlName="cantidad"
         placeholder="Cantidad..."
       />
-      @if (hasErrors('cantidad')) {
+      @if (hasErrors('cantidad', 'required')) {
       <div class="text-danger">cantidad requerido</div>
       }
 
-      <label for="precio_unitario" class="form-label">Precio Unitario</label>
+      <label for="precio_unitario" class="form-label">Precio Unitario*</label>
       <input
-        [ngClass]="{ 'is-invalid': hasErrors('precio_unitario') }"
+        [ngClass]="{ 'is-invalid': hasErrors('precio_unitario', 'required') }"
         type="number"
         class="form-control"
         formControlName="precio_unitario"
         placeholder="Precio Unitario..."
       />
-      @if (hasErrors('precio_unitario')) {
+      @if (hasErrors('precio_unitario', 'required')) {
       <div class="text-danger">precio requerido</div>
       }
     </div>
