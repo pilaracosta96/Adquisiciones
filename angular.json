@@ -79,6 +79,9 @@
             },
             "development": {
               "buildTarget": "Adquisiciones:build:development"
+            },
+            "options": {
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"
