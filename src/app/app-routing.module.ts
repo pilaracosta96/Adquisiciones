@@ -9,9 +9,12 @@ import { FormLicenciaComponent } from './form-licencia/form-licencia.component';
 import { FormInfraComponent } from './form-infra/form-infra.component';
 import { FormServicioComponent } from './form-servicio/form-servicio.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: "inicio", component:InicioComponent},
+  { path: "login", component:LoginComponent},
+  { path: "", component:LoginComponent},
   { path: "bibliografias", component:BibliografiaComponent},
   { path: "bibliografias/nuevo", component:FormBiblioComponent},
   { path: "licencias", component:LicenciasComponent},
@@ -20,7 +23,7 @@ const routes: Routes = [
   { path: "infra/nuevo", component:FormInfraComponent},
   { path: "servicios", component:ServiciosComponent},
   { path: "servicios/nuevo", component:FormServicioComponent},
-  { path: "**", redirectTo: "inicio", pathMatch:"full"}
+  { path: "**", redirectTo: "login", pathMatch:"full"}
 ];
 
 @NgModule({

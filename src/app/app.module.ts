@@ -17,6 +17,8 @@ import { FormServicioComponent } from './form-servicio/form-servicio.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { ModalComponent } from './modal/modal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './login/login.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 
@@ -34,7 +36,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormInfraComponent,
     FormServicioComponent,
     InicioComponent,
-    ModalComponent
+    ModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    OAuthModule.forRoot(),
     NgxPaginationModule
   ],
   providers: [
