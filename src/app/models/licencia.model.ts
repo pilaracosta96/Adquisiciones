@@ -5,9 +5,10 @@ export interface ILicencia {
     fechaOtorgamiento: string;
     fechaVencimiento:  string;
     fabricante:        Fabricante;
-    numeroRelease:     null | string;
-    version:           null | string;
+    numeroRelease:     string;
+    version:           string;
     monto:             number;
+    numeroSerie:       string;
     eliminada:         boolean;
     isSelected:        boolean;
 }

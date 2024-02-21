@@ -45,6 +45,7 @@ export class BibliografiaComponent implements OnInit {
       // Si ya está en la lista, quítalo (deselección)
       this.listaCheck.splice(index, 1);
     }
+    
   }
 
 

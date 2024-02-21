@@ -42,7 +42,7 @@ export class FormInfraComponent {
         (error) => {
           Swal.fire({
             icon: 'error',
-            title: 'Error al enviar datos' + error.mensaje,
+            title: 'Error al enviar datos  ' + error.mensaje,
             text: 'Algo salió mal',
             footer: '<a >Verifique los campos por favor</a>',
           });
@@ -50,9 +50,9 @@ export class FormInfraComponent {
       );
   }
 
-  hasErrors(controlName: string) {
+  hasErrors(controlName: string, errorType: string) {
     return (
-      this.formularioInfra.get(controlName)?.hasError('required') &&
+      this.formularioInfra.get(controlName)?.hasError(errorType) &&
       this.formularioInfra.get(controlName)?.touched
     );
   }
