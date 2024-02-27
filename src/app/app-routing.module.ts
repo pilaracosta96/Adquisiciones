@@ -10,19 +10,20 @@ import { FormInfraComponent } from './form-infra/form-infra.component';
 import { FormServicioComponent } from './form-servicio/form-servicio.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGoogleGuard } from './services/auth-guard';
 
 const routes: Routes = [
   { path: "inicio", component:InicioComponent},
   { path: "login", component:LoginComponent},
   { path: "", component:LoginComponent},
-  { path: "bibliografias", component:BibliografiaComponent},
-  { path: "bibliografias/nuevo", component:FormBiblioComponent},
-  { path: "licencias", component:LicenciasComponent},
-  { path: "licencias/nuevo", component:FormLicenciaComponent},
-  { path: "infra", component:InfraComponent},
-  { path: "infra/nuevo", component:FormInfraComponent},
-  { path: "servicios", component:ServiciosComponent},
-  { path: "servicios/nuevo", component:FormServicioComponent},
+  { path: "bibliografias", component:BibliografiaComponent, canActivate:[AuthGoogleGuard]},
+  { path: "bibliografias/nuevo", component:FormBiblioComponent, canActivate:[AuthGoogleGuard]},
+  { path: "licencias", component:LicenciasComponent, canActivate:[AuthGoogleGuard]},
+  { path: "licencias/nuevo", component:FormLicenciaComponent, canActivate:[AuthGoogleGuard]},
+  { path: "infra", component:InfraComponent, canActivate:[AuthGoogleGuard]},
+  { path: "infra/nuevo", component:FormInfraComponent, canActivate:[AuthGoogleGuard]},
+  { path: "servicios", component:ServiciosComponent, canActivate:[AuthGoogleGuard]},
+  { path: "servicios/nuevo", component:FormServicioComponent, canActivate:[AuthGoogleGuard]},
   { path: "**", redirectTo: "login", pathMatch:"full"}
 ];
 
