@@ -62,8 +62,8 @@ export class FormLicenciaComponent {
             (error) => {
               Swal.fire({
                 icon: 'error',
-                title: 'Error al enviar datos   ' + error.mensaje,
-                text: 'Algo salió mal',
+                title: 'Error al enviar datos   ',
+                text: 'Ya existe una Licencia con ese número de serie. Por favor modifíquelo',
                 footer: '<a >Verifique los campos por favor</a>',
               });
             }

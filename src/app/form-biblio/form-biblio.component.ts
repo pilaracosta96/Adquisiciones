@@ -62,8 +62,8 @@ export class FormBiblioComponent {
             (error) => {
               Swal.fire({
                 icon: 'error',
-                title: 'Error al enviar datos  ' + error.error,
-                text: 'Algo salió mal',
+                title: 'Error al enviar datos  ',
+                text: 'Ya existe ese ISBN, modifíquelo por favor',
                 footer: '<a >Verifique los campos por favor</a>',
               });
             }

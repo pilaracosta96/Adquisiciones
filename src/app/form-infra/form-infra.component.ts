@@ -42,8 +42,8 @@ export class FormInfraComponent {
         (error) => {
           Swal.fire({
             icon: 'error',
-            title: 'Error al enviar datos  ' + error.mensaje,
-            text: 'Algo salió mal',
+            title: 'Error al enviar datos',
+            text: 'Ya existe un equipo con el mismo número de serie. Por Favor ingrese un nuevo numero',
             footer: '<a >Verifique los campos por favor</a>',
           });
         }
