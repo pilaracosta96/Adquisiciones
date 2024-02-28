@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: "infra/nuevo", component:FormInfraComponent, canActivate:[AuthGoogleGuard]},
   { path: "servicios", component:ServiciosComponent, canActivate:[AuthGoogleGuard]},
   { path: "servicios/nuevo", component:FormServicioComponent, canActivate:[AuthGoogleGuard]},
-  { path: "**", redirectTo: "login", pathMatch:"full"}
+  { path: "**", redirectTo: "inicio", pathMatch:"full"}
 ];
 
 @NgModule({
